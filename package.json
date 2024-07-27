@@ -1,0 +1,22 @@
+{
+  "name": "TypeScript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "format": "prettier --write src/**/*.ts",
+    "cmp": "tsc index.ts --watch",
+    "dev": "node index.js",
+    "lint": "tslint src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.5.4"
+  }
+}
