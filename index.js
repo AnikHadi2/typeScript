@@ -1,1 +1,14 @@
-var userName = "Hadi";
+var userName = [];
+// let userName: string[] = [];
+userName.push("John", "Alice", "Bob");
+console.log(userName);
+var age = [25, 30, 35];
+// let age: number[] = [25, 30, 35];
+console.log(age);
+var isActive;
+// let isActive: boolean[];
+isActive = [true, false, false, true, false];
+console.log(isActive);
+var mixedArray = ["John", 25, "Alice", 30, 35];
+// let mixedArray: (string | number)[] = ["John", 25, "Alice", 30, 35];
+console.log(mixedArray);
