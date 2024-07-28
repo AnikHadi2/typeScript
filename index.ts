@@ -1,3 +1,1 @@
-let userName: string = "Hadi";
-
-console.log(userName);
+let userName: string | number | boolean = "Hadi";
