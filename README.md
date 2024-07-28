@@ -1,1449 +1,1391 @@
-<div align="center">
-  <br />
-    <a href="https://youtu.be/zgGhzuBZOQg" target="_blank">
-      <img src="https://github.com/adrianhajdin/event_platform/assets/151519281/548975af-f0ed-4103-8834-fe93cf91862e" alt="Project Banner">
-    </a>
-  <br />
+# TypeScript Documentation
 
-  <div>
-    <img src="https://img.shields.io/badge/-Next_JS_14-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="Next.js" />
-    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/-Stripe-black?style=for-the-badge&logoColor=white&logo=stripe&color=008CDD" alt="stripe" />
-  </div>
+- prerequisities: Javascript
 
-  <h3 align="center">A Full Stack Next 14 Events App</h3>
+## Table of Contents
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
+1. [Basic Typescript Topics](#1-basic-typescript-topics)
 
-## 📋 <a name="table">Table of Contents</a>
+   [1.1 Introduction to Typescript](#11-introduction-to-typescript)
 
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets](#snippets)
-6. 🔗 [Links](#links)
-7. 🚀 [More](#more)
+   [1.2 Data Types: Built-in / Basic Types](#12-data-types-built-in--basic-types)
 
-## 🚨 Tutorial
+   [1.3 Data Types: User defined types](#13-data-types-user-defined)
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+   [1.4 tsconfig](#14-tsconfig)
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+   [1.5 function](#15-function)
 
-<a href="https://youtu.be/zgGhzuBZOQg" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+2. [Intermediate TypeScript Topics](#2-intermediate-typescript-topics)
 
-## <a name="introduction">🤖 Introduction</a>
+   [2.1 Creating types from types](#21-creating-types-from-types)
 
-Built on Next.js 14, the events application stands as a comprehensive, full-stack platform for managing events. It serves as a hub, spotlighting diverse events taking place globally. Featuring seamless payment processing through Stripe, you have the capability to purchase tickets for any event or even initiate and manage your own events.
+   [2.2 Narrowing](#22-narrowing)
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over 27k+ members. It's a place where people help each other out.
+   [2.3 Type guards](#23-type-guards-example)
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+   [2.4 DOM Manipulation with typescripts](#24-dom-manipulation-with-typescript)
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+3. [Advanced TypeScript Topics]()
 
-- Node.js
-- Next.js
-- TypeScript
-- TailwindCSS
-- Stripe
-- Zod
-- React Hook Form
-- Shadcn
-- uploadthing
+## 1. Basic Typescript Topics
 
-## <a name="features">🔋 Features</a>
+### 1.1 Introduction to Typescript
 
-👉 **Authentication (CRUD) with Clerk:** User management through Clerk, ensuring secure and efficient authentication.
+What is TypeScript?
 
-👉 **Events (CRUD):** Comprehensive functionality for creating, reading, updating, and deleting events, giving users full control over event management.
+- In a simple words, Additional Types (tuples, enum, interfaces, generics etc) + JavaScript = TypeScript
+- It is a superset of JS
+- developed (2012) and maintained by Microsoft
+- we can use typeof to check data type
+- Js is dynamically types -> let x = 20;
+- Typescript add static typing to js -> let x: number = 20;
 
-- **Create Events:** Users can effortlessly generate new events, providing essential details such as title, date, location, and any additional information.
-- **Read Events:** Seamless access to a detailed view of all events, allowing users to explore event specifics, including descriptions, schedules, and related information.
-- **Update Events:** Empowering users to modify event details dynamically, ensuring that event information remains accurate and up-to-date.
-- **Delete Events:** A straightforward process for removing events from the system, giving administrators the ability to manage and curate the platform effectively.
+Why TypeScript?
 
-👉 **Related Events:** Smartly connects events that are related and displaying on the event details page, making it more engaging for users
+- JS Check types in run time while typescript add static typing to JS so we can handle errors before running the program. We can handle errors beofre running the program.
+- increase readability and code quality
+- We can use it React, Vue, popular JS libraray Angular use TypeScript.
+- It can be used in both: client and server side.
+- Intellisense IDE Support while coding: code completion, content assist and code hinting
 
-👉 **Organized Events:** Efficient organization of events, ensuring a structured and user-friendly display for the audience, i.e., showing events created by the user on the user profile
+TS Versions
 
-👉 **Search & Filter:** Empowering users with a robust search and filter system, enabling them to easily find the events that match their preferences.
+- earlier versions
+- TypeScript 1.0 October 2014
+- TypeScript 2.0 September 2016
+- TypeScript 3.0 July 2018
+- TypeScript 4.0 - latest release August 2020
+- TypeScript 5.4 - 2024
 
-👉 **New Category:** Dynamic categorization allows for the seamless addition of new event categories, keeping your platform adaptable.
+Code Example of Javascript and TypeScript
 
-👉 **Checkout and Pay with Stripe:** Smooth and secure payment transactions using Stripe, enhancing user experience during the checkout process.
+```js
+// index.js
+// without typescript
+function addNumbers(num1, num2) {
+  console.log(num1 + num2);
+}
 
-👉 **Event Orders:** Comprehensive order management system, providing a clear overview of all event-related transactions.
+addNumbers(20, 30);
+addNumbers(20, "30");
 
-👉 **Search Orders:** Quick and efficient search functionality for orders, facilitating easy tracking and management.
+// with typescript
+// without typescript
+function addNumbers(num1: number, num2: number) {
+  console.log(num1 + num2);
+}
 
-and many more, including code architecture and reusability
+addNumbers(20, 30); // no error
+addNumbers(20, "30"); // error
 
-## <a name="quick-start">🤸 Quick Start</a>
+// without typescript
+let x;
+x = 20; // correct
+x = "anisul"; // correct
+x = true; // correct
+x = [10, 20]; // correct
 
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/your-username/your-project.git
-cd your-project
+// with typescript
+let x: number;
+x = 20; // correct
+x = "20"; // Not correct
+x = true; // Not correct
+x = [10, 20]; // Not correct
 ```
 
-**Installation**
+How does typescript work?
 
-Install the project dependencies using npm:
+- index.ts -> tsc index.ts -> index.js
 
-```bash
-npm install
-```
+Environment setup
 
-**Set Up Environment Variables**
+- Install node & typescript
 
-Create a new file named `.env` in the root of your project and add the following content:
+  ```js
+      local installation: npm intsall typescript --save-dev
+      Or
+      global installation: npm install -g typescript
+  ```
 
-```env
-#NEXT
-NEXT_PUBLIC_SERVER_URL=
+- check various versions:
 
-#CLERK
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_CLERK_WEBHOOK_SECRET=
+  ```js
+    node --version
+    npm --version
+    tsc --version
+  ```
 
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+First typescript program
 
-#MONGODB
-MONGODB_URI=
+- typescript file extension is .ts
+- Run the following program using `tsc index.ts --watch` command and then `node index.js`
 
-#UPLOADTHING
-UPLOADTHING_SECRET=
-UPLOADTHING_APP_ID=
+  ```js
+  // index.ts
 
-#STRIPE
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-```
-
-Replace the placeholder values with your actual credentials
-
-**Running the Project**
-
-```bash
-npm start
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
-
-## <a name="snippets">🕸️ Snippets</a>
-
-<details>
-<summary><code>globals.css</code></summary>
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+  // without ts
+  function addNumbers(num1, num2) {
+    console.log(num1 + num2);
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  addNumbers(20, 30);
+  addNumbers(20, "30");
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-* {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-poppins);
-}
-
-.filter-grey {
-  filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%) hue-rotate(
-      32deg
-    )
-    brightness(98%) contrast(92%);
-}
-
-/* ========================================== TAILWIND STYLES */
-@layer utilities {
-  .wrapper {
-    @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
+  // correct one using ts
+  function addNumbers(num1: number, num2:number) {
+    console.log(num1 + num2);
   }
 
-  .flex-center {
-    @apply flex justify-center items-center;
-  }
+  addNumbers(20, 30);
+  addNumbers(20, "30");
 
-  .flex-between {
-    @apply flex justify-between items-center;
-  }
 
-  /* TYPOGRAPHY */
-  /* 64 */
-  .h1-bold {
-    @apply font-bold text-[40px] leading-[48px] lg:text-[48px] lg:leading-[60px]  xl:text-[58px] xl:leading-[74px];
-  }
+  let num1 = 20;
+  console.log(num1);
 
-  /* 40 */
-  .h2-bold {
-    @apply font-bold text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
-  }
+  let name= "anisul islam";
+  name. //intellisense support will be here
+  ```
 
-  .h2-medium {
-    @apply font-medium text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
-  }
+### 1.2 Data Types: Built-in / Basic Types
 
-  /* 36 */
-  .h3-bold {
-    @apply font-bold text-[28px] leading-[36px] md:text-[36px] md:leading-[44px];
-  }
+- Any (super type)
+  - built in types: number, string, boolean, void, null, undefined, never
+  - user-defined types: Arrays, Enums, Classes, interfaces etc.
+  - for avoiding typescript in entire file:
+    `// @ts-nocheck`
 
-  .h3-medium {
-    @apply font-medium text-[28px] leading-[36px] md:text-[36px] md:leading-[44px];
-  }
+In TypeScript, you can use basic types to specify the type of variables, function parameters, and return values. Here are some of the basic types in TypeScript:
 
-  /* 32 */
-  .h4-medium {
-    @apply font-medium text-[32px] leading-[40px];
-  }
+1. **number**: Represents both integer and floating-point numbers.
 
-  /* 28 */
-  .h5-bold {
-    @apply font-bold text-[28px] leading-[36px];
-  }
+   ```typescript
+   let age: number = 25;
+   let price: number = 9.99;
+   ```
 
-  /* 24 */
-  .p-bold-24 {
-    @apply font-bold text-[24px] leading-[36px];
-  }
+2. **string**: Represents a sequence of characters.
 
-  .p-medium-24 {
-    @apply font-medium text-[24px] leading-[36px];
-  }
+   ```typescript
+   let name: string = "John";
+   ```
 
-  .p-regular-24 {
-    @apply font-normal text-[24px] leading-[36px];
-  }
+3. **boolean**: Represents a true or false value.
 
-  /* 20 */
-  .p-bold-20 {
-    @apply font-bold text-[20px] leading-[30px] tracking-[2%];
-  }
+   ```typescript
+   let isDone: boolean = false;
+   ```
 
-  .p-semibold-20 {
-    @apply text-[20px] font-semibold leading-[30px] tracking-[2%];
-  }
+4. **any**: Represents a dynamic or untyped value. Avoid using this when possible, as it bypasses type checking. if you have no knowledge about the variable type use any type: user input values
 
-  .p-medium-20 {
-    @apply text-[20px] font-medium leading-[30px];
-  }
+   ```typescript
+   let data: any = 42;
+   data = "Hello";
 
-  .p-regular-20 {
-    @apply text-[20px] font-normal leading-[30px] tracking-[2%];
-  }
+   let password: any;
+   let passwords: any[];
+   ```
 
-  /* 18 */
-  .p-semibold-18 {
-    @apply text-[18px] font-semibold leading-[28px] tracking-[2%];
-  }
+5. **void**: Represents the absence of a value, typically used as the return type of functions that don't return anything.
 
-  .p-medium-18 {
-    @apply text-[18px] font-medium leading-[28px];
-  }
+   ```typescript
+   function logMessage(): void {
+     console.log("This is a log message.");
+   }
+   ```
 
-  .p-regular-18 {
-    @apply text-[18px] font-normal leading-[28px] tracking-[2%];
-  }
+6. **null** and **undefined**: Represent null and undefined values, respectively.
 
-  /* 16 */
-  .p-bold-16 {
-    @apply text-[16px] font-bold leading-[24px];
-  }
+   ```typescript
+   let n: null = null;
+   let u: undefined = undefined;
+   ```
 
-  .p-medium-16 {
-    @apply text-[16px] font-medium leading-[24px];
-  }
+7. **never**: Represents a value that never occurs, such as a function that throws an error or an infinite loop.
 
-  .p-regular-16 {
-    @apply text-[16px] font-normal leading-[24px];
-  }
+   ```typescript
+   function throwError(message: string): never {
+     throw new Error(message);
+   }
+   ```
 
-  /* 14 */
-  .p-semibold-14 {
-    @apply text-[14px] font-semibold leading-[20px];
-  }
+These basic types provide a foundation for specifying the types of variables and data in TypeScript. You can use them to ensure type safety in your code and catch type-related errors at compile time.
 
-  .p-medium-14 {
-    @apply text-[14px] font-medium leading-[20px];
-  }
+- inferred Typing
 
-  .p-regular-14 {
-    @apply text-[14px] font-normal leading-[20px];
-  }
+  ```js
+  let userName = "anis"; // data type inferred as string
+  ```
 
-  /* 12 */
-  .p-medium-12 {
-    @apply text-[12px] font-medium leading-[20px];
-  }
+### 1.3 Data Types: User defined
 
-  /* SHADCN OVERRIDES */
-  .select-field {
-    @apply w-full bg-grey-50 h-[54px] placeholder:text-grey-500 rounded-full p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent focus:ring-transparent !important;
-  }
+1. **union**: Union Type - more than one type for variable or function parameter. Program - odd/even for number and string to give idea about this union concept.
 
-  .input-field {
-    @apply bg-grey-50 h-[54px] focus-visible:ring-offset-0 placeholder:text-grey-500 rounded-full p-regular-16 px-4 py-3 border-none focus-visible:ring-transparent !important;
-  }
+   ```js
+   let userId: string | number;
 
-  .textarea {
-    @apply bg-grey-50 flex flex-1 placeholder:text-grey-500 p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent !important;
-  }
+   // userId = 101; // no error
+   // userId = "101"; // no error
+   // userId = true; // error
 
-  .button {
-    @apply rounded-full h-[54px] p-regular-16;
-  }
+   function userIdDataType(userId: string | number) {
+     console.log(typeof userId);
+   }
 
-  .select-item {
-    @apply py-3 cursor-pointer  focus:bg-primary-50;
-  }
+   userIdDataType("123"); // no error
+   userIdDataType(123); // no error
+   // userIdDataType(true); // error
 
-  .toggle-switch {
-    @apply bg-gray-300 !important;
-  }
-}
+   const isEven = (num: number | string) => {
+     if (typeof num === "number") {
+       console.log(typeof num);
+       return num % 2 === 0 ? "even" : "odd";
+     } else {
+       console.log(typeof num);
+       return Number(num) % 2 === 0 ? "even" : "odd";
+     }
+   };
 
-/* ========================================== CLERK STYLES */
-.cl-logoImage {
-  height: 38px;
-}
+   console.log(isEven(32));
+   console.log(isEven("32"));
+   ```
 
-.cl-userButtonBox {
-  flex-direction: row-reverse;
-}
+2. **object**: Represents any non-primitive value.
 
-.cl-userButtonOuterIdentifier {
-  font-size: 16px;
-}
+   ```typescript
+   let person: object = { name: "Alice", age: 30 };
 
-.cl-userButtonPopoverCard {
-  right: 4px !important;
-}
+   let user: {
+     name: string;
+     age: number;
+   };
 
-.cl-formButtonPrimary:hover,
-.cl-formButtonPrimary:focus,
-.cl-formButtonPrimary:active {
-  background-color: #705cf7;
-}
+   user = {
+     name: "anisul islam",
+     age: 32,
+   };
 
-/* ========================================== REACT-DATEPICKER STYLES */
-.datePicker {
-  width: 100%;
-}
+   let names: object;
+   names = { name1: "anis" };
+   console.log(names);
 
-.react-datepicker__input-container input {
-  background-color: transparent;
-  width: 100%;
-  outline: none;
-  margin-left: 16px;
-}
+   let users: object[];
+   users = [];
 
-.react-datepicker__day--selected {
-  background-color: #624cf5 !important;
-  color: #ffffff !important;
-  border-radius: 4px;
-}
+   let user1: { userName: string; userId: number };
+   user1 = { userName: "anis", userId: 101 };
+   users.push(user1);
 
-.react-datepicker__time-list-item--selected {
-  background-color: #624cf5 !important;
-}
-```
+   let user2: { userName: string; userId: number };
+   user2 = { userName: "rabu", userId: 102 };
 
-</details>
+   users.push(user2);
 
-<details>
-<summary><code>tailwind.config.ts</code></summary>
+   for (const key in users) {
+     console.log(users[key]["userName"]);
+   }
+   ```
+
+3. **array**: Represents an array of values of a specific type. 2 ways to declare: `number[]` or `Array<number>`
+
+   ```typescript
+   let numbers: number[] = [1, 2, 3, 4, 5];
+
+   // let users = ["anis", "rabu", "pinky"];
+
+   // let users: string[];
+   // users = ["anis", "rabu", "pinky"];
+
+   let users: Array<string>;
+   users = ["anis", "rabu", "pinky"];
+
+   // for (let index = 0; index < users.length; index++) {
+   //   const element = users[index];
+   //   console.log(element);
+   // }
+
+   // users.forEach((element) => {
+   //   console.log(element);
+   // });
+
+   users.sort();
+   console.log(users);
+
+   users.push("limon");
+   console.log(users);
+
+   users.pop();
+   console.log(users);
+
+   users.unshift("milton");
+   console.log(users);
+
+   users.shift();
+   console.log(users);
+
+   // multi-types array
+   // let users: (number | string)[];
+   // users = [10, "anis", 25, 35, "islam"];
+   ```
+
+4. **tuple**: Represents an array with a fixed number of elements, each with a specific type.
+
+   ```typescript
+   let employee: [string, number] = ["John Doe", 30];
+
+   let users: [number, String];
+   users = [101, "anis"];
+
+   console.log(users);
+   console.log(users[0]);
+   console.log(users[1]);
+
+   users.push(102, "sakib");
+   console.log(users);
+   ```
+
+5. **enum**: Represents a set of named constants. no duplicate data.
+
+   ```typescript
+   enum Color {
+     Red,
+     Green,
+     Blue,
+   }
+
+   let selectedColor: Color = Color.Red;
+
+   // enum example
+   // helps us to store constants
+
+   // numeric enum
+   enum UserRequest {
+     ReadData,
+     // ReadData = 2,
+     SaveData,
+     UpdateData,
+   }
+
+   console.log(UserRequest);
+   console.log(UserRequest.ReadData);
+   console.log(UserRequest.SaveData);
+
+   // string enum
+   enum UserRequest {
+     ReadData = "READ_DATA",
+     // ReadData = 2,
+     SaveData = "SAVE_DATA",
+     UpdateData = "UPDATE_DATA",
+   }
+
+   console.log(UserRequest);
+   console.log(UserRequest.ReadData);
+   console.log(UserRequest.SaveData);
+   console.log(UserRequest["UpdateData"]);
+
+   // Heterogeneous enum
+   enum User {
+     id = 101,
+     name = "anisul",
+   }
+   ```
+
+6. **Intersection**: In TypeScript, you can use intersection types to combine multiple types into a single type that has all the properties and methods of each type. Intersection types are created using the `&` operator. Here's an example:
+
+   ```typescript
+   // Define two types
+   type Employee = {
+     name: string;
+     role: string;
+   };
+
+   type Manager = {
+     department: string;
+     employeesManaged: number;
+   };
+
+   // Create an intersection type
+   type ManagerWithEmployeeInfo = Employee & Manager;
+
+   // Create an object that conforms to the intersection type
+   const manager: ManagerWithEmployeeInfo = {
+     name: "Alice",
+     role: "Manager",
+     department: "HR",
+     employeesManaged: 10,
+   };
+
+   // Access properties
+   console.log(manager.name); // Alice
+   console.log(manager.role); // Manager
+   console.log(manager.department); // HR
+   console.log(manager.employeesManaged); // 10
+   ```
+
+   In this example, we define two types: `Employee` and `Manager`. Then, we create an intersection type called `ManagerWithEmployeeInfo` by combining `Employee` and `Manager` using the `&` operator. The resulting type, `ManagerWithEmployeeInfo`, has all the properties of both `Employee` and `Manager`.
+
+   When we create an object (`manager`) that conforms to the `ManagerWithEmployeeInfo` type, it must have all the properties defined in both `Employee` and `Manager`. This allows us to create objects that have a combination of properties from different types, providing flexibility and type safety.
+
+   Intersection types are especially useful when you want to compose types to represent complex objects or data structures in your TypeScript code.
+
+7. **Custom Type**: you can create your own type
+
+   ```js
+   type User = { userName: string, userId: number };
+
+   let users: User[];
+   users = [];
+
+   let user1: User;
+   user1 = { userName: "anis", userId: 101 };
+   users.push(user1);
+
+   let user2: User;
+   user2 = { userName: "rabu", userId: 102 };
+   users.push(user2);
+
+   let user3: User;
+   user3 = { userName: "lucky", userId: 103 };
+   users.push(user3);
+
+   // console.log(users);
+
+   type RequestType = "GET" | "POST";
+   let getRequest: RequestType;
+   getRequest = "GET";
+
+   function requestHandler(requestType: RequestType) {
+     console.log(requestType);
+   }
+   requestHandler("GET");
+   ```
+
+8. **class Type OOP** - You can create class type as well. class can have constructor, properties, methods. create object let objectName = new className()
+
+   - Class and constructor Example
+
+   ```js
+   class User {
+     // properties, methods, constructor
+     userName: string;
+     age: number;
+
+     constructor(userName: string, age: number) {
+       this.userName = userName;
+       this.age = age;
+     }
+
+     display(): void {
+       console.log(`username: ${this.userName}, age: ${this.age}`);
+     }
+   }
+
+   let user1 = new User("Anisul Islam", 25);
+   user1.display();
+
+   let user2 = new User("Rabeya Islam", 31);
+   user2.display();
+   ```
+
+   - Inheritance: inheritance helps us to acquire properties of one class to another
+
+   ```js
+   class User {
+     userName: string;
+     age: number;
+
+     constructor(userName: string, age: number) {
+       this.userName = userName;
+       this.age = age;
+     }
+
+     display(): void {
+       console.log(`username: ${this.userName}, age: ${this.age}`);
+     }
+   }
+
+   class Student extends User {
+     studentId: number;
+
+     constructor(userName: string, age: number, studentId: number) {
+       super(userName, age);
+       this.studentId = studentId;
+     }
+     display(): void {
+       console.log(
+         `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+       );
+     }
+   }
+
+   let student1 = new Student("keya", 31, 1302020015);
+   student1.display();
+
+   let user1 = new User("Anisul Islam", 25);
+   user1.display();
+
+   // let user2 = new User("Rabeya Islam", 31);
+   // user2.display();
+   ```
+
+   - **Abstract class** - abstraction helps us to hide the implementation of something. class declared with abstract keyword. object can not be created from abstract class. if a class extends abstract class; it must inherit all the abstract methods
+
+   ```js
+   abstract class User {
+     userName: string;
+     age: number;
+
+     constructor(userName: string, age: number) {
+       this.userName = userName;
+       this.age = age;
+     }
+
+     abstract display(): void;
+   }
+
+   class Student extends User {
+     studentId: number;
+
+     constructor(userName: string, age: number, studentId: number) {
+       super(userName, age);
+       this.studentId = studentId;
+     }
+     display(): void {
+       console.log(
+         `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+       );
+     }
+   }
+
+   let student1 = new Student("keya", 31, 1302020015);
+   student1.display();
+
+   ```
+
+   - **Encapsulation and access modifiers** - 4 key principles of Object Oriented Programming (OOP): Inheritance, Abstraction, Encapsulation, Polymorphism. Encapsulation helps us to manage the visibility of class members. 4 Access modifiers: public, private, protected, readonly
+
+   ![Access Modifiers](images/access-modifiers.png)
+
+   ```js
+     // public, private, protected, readonly
+     // setter and getter
+     class User {
+       readonly userName: string;
+       public age: number;
+
+       constructor(userName: string, age: number) {
+         this.userName = userName;
+         this.age = age;
+       }
+
+       display(): void {
+         console.log(`username: ${this.userName}, age: ${this.age}`);
+       }
+     }
+
+     class Student extends User {
+       private studentId: number;
+
+       constructor(userName: string, age: number, studentId: number) {
+         super(userName, age);
+         this.studentId = studentId;
+       }
+       display(): void {
+         console.log(
+           `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+         );
+       }
+
+       setStudentId(studentId: number): void {
+         this.studentId = studentId;
+       }
+
+       getStudentId(): number {
+         return this.studentId;
+       }
+     }
+
+     let student1 = new Student("keya", 31, 1302020015);
+     student1.setStudentId(1302020017);
+     console.log(student1.getStudentId());
+     // student1.display();
+
+     let user1 = new User("robi", 23);
+     console.log(user1.userName);
+     // user1.display();
+   ```
+
+### Inheritance
+
+Inheritance allows a class to inherit properties and methods from another class.
+
+### Encapsulation
+
+Encapsulation restricts direct access to some of an object's components, which can be achieved using access modifiers (`private`, `protected`, `public`).
+
+### Polymorphism
+
+Polymorphism allows methods to do different things based on the object it is acting upon, even though they share the same name.
+
+### Abstraction
+
+Abstraction allows you to define methods that must be created within any child classes built from the abstract class.
+
+Here’s an example that demonstrates all four principles:
 
 ```typescript
-/** @type {import('tailwindcss').Config} */
-import { withUt } from "uploadthing/tw";
+// Abstract class (Abstraction)
+abstract class Person {
+  private _name: string;
+  private _age: number;
 
-module.exports = withUt({
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        primary: {
-          500: "#624CF5",
-          50: " #F6F8FD",
-          DEFAULT: "#624CF5",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        coral: {
-          500: "#15BF59",
-        },
+  constructor(name: string, age: number) {
+    this._name = name;
+    this._age = age;
+  }
 
-        grey: {
-          600: "#545454", // Subdued - color name in figma
-          500: "#757575",
-          400: "#AFAFAF", // Disabled - color name in figma
-          50: "#F6F6F6", // White Grey - color name in figma
-        },
-        black: "#000000",
-        white: "#FFFFFF",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        foreground: "hsl(var(--foreground))",
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      fontFamily: {
-        poppins: ["var(--font-poppins)"],
-      },
-      backgroundImage: {
-        "dotted-pattern": "url('/assets/images/dotted-pattern.png')",
-        "hero-img": "url('/assets/images/hero.png')",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
+  get name(): string {
+    return this._name;
+  }
+
+  get age(): number {
+    return this._age;
+  }
+
+  // Abstract method
+  abstract getDescription(): string;
+}
+
+// Student class (Inheritance)
+class Student extends Person {
+  private _grade: number;
+
+  constructor(name: string, age: number, grade: number) {
+    super(name, age);
+    this._grade = grade;
+  }
+
+  get grade(): number {
+    return this._grade;
+  }
+
+  // Implementing abstract method (Polymorphism)
+  getDescription(): string {
+    return `Student: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
+
+// Teacher class (Inheritance)
+class Teacher extends Person {
+  private _subject: string;
+
+  constructor(name: string, age: number, subject: string) {
+    super(name, age);
+    this._subject = subject;
+  }
+
+  get subject(): string {
+    return this._subject;
+  }
+
+  // Implementing abstract method (Polymorphism)
+  getDescription(): string {
+    return `Teacher: ${this.name}, Age: ${this.age}, Subject: ${this.subject}`;
+  }
+}
+
+// Create instances and demonstrate polymorphism
+const student = new Student("Alice", 20, 90);
+const teacher = new Teacher("Bob", 45, "Mathematics");
+
+console.log(student.getDescription()); // Student: Alice, Age: 20, Grade: 90
+console.log(teacher.getDescription()); // Teacher: Bob, Age: 45, Subject: Mathematics
+
+// Encapsulation: attempting to access private properties directly will result in an error
+// console.log(student._name); // Error: Property '_name' is private and only accessible within class 'Person'.
+// console.log(teacher._subject); // Error: Property '_subject' is private and only accessible within class 'Teacher'.
+
+// Use getter methods to access encapsulated properties
+console.log(student.name); // Alice
+console.log(teacher.subject); // Mathematics
+```
+
+### Explanation
+
+1. **Abstraction**:
+
+   - The `Person` class is abstract and contains an abstract method `getDescription`.
+   - This method must be implemented by any non-abstract subclass of `Person`.
+
+2. **Encapsulation**:
+
+   - Private properties (`_name`, `_age`, `_grade`, `_subject`) are used to restrict direct access.
+   - Getter methods (`get name()`, `get age()`, `get grade()`, `get subject()`) are provided to access these private properties.
+
+3. **Inheritance**:
+
+   - The `Student` and `Teacher` classes inherit from the `Person` class.
+   - They call the constructor of the parent class using `super(name, age)`.
+
+4. **Polymorphism**:
+   - Both `Student` and `Teacher` implement the `getDescription` method from the `Person` class.
+   - This method behaves differently based on whether it's called on a `Student` or `Teacher` instance.
+
+This example demonstrates how you can use these OOP principles in TypeScript to create a well-structured and maintainable codebase.
+
+9. **Interface type**
+
+   ```js
+   // without interface
+   let users: {
+     id: number,
+     name: string,
+     age: number,
+   }[] = [];
+
+   let user1: {
+     id: number,
+     name: string,
+     age: number,
+   } = {
+     id: 1,
+     name: "Mr. Potato",
+     age: 32,
+   };
+
+   let user2: {
+     id: number,
+     name: string,
+     age: number,
+   } = { id: 2, name: "Ms. Tomato", age: 21 };
+
+   users.push(user1);
+   users.push(user2);
+
+   const printUserInfo = (user: { id: number, name: string, age: number }) => {
+     console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+   };
+
+   users.forEach((user) => printUserInfo(user));
+
+   // with interface
+   interface User {
+     id: number;
+     name: string;
+     age: number;
+   }
+
+   let users: User[] = [];
+
+   let user1: User = { id: 1, name: "Mr. Potato", age: 32 };
+   let user2: User = { id: 2, name: "Ms. Tomato", age: 21 };
+
+   users.push(user1);
+   users.push(user2);
+
+   const printUserInfo = (user: User) => {
+     console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+   };
+
+   users.forEach((user) => printUserInfo(user));
+   ```
+
+   ```js
+       // class implements interface
+       interface UserFormatter {
+         formatUser: () => string;
+       }
+
+         export class User implements UserFormatter {
+           constructor(private fullName: string, private age: number) {}
+
+           formatUser = () => {
+             return `name: ${this.fullName}, age: ${this.age}`;
+           };
+         }
+
+         let user = new User("Mr. Potato", 32);
+         console.log(user);
+         console.log(user.formatUser());
+   ```
+
+10. **Interface vs type**
+
+    - both are nearly similar in most cases.
+    - However, Adding new filed after creation is possible for an interface but not possible for a type.
+
+    ```js
+    // Example 1
+    interface Color {
+      title: string;
+    }
+    interface Color {
+      text: string;
+    }
+    // now class A has access to title and string
+    class A implements Color {
+      title: string;
+      text: string;
+    }
+    ```
+
+    - both can be extended
+
+    ```js
+    interface IFUser {
+      name: string;
+    }
+
+    interface IFStudent extends IFUser {
+      student_id: string;
+    }
+
+    // Extending a type via intersections
+    type User = {
+      name: string,
+    };
+
+    type Student = User & {
+      student_id: string,
+    };
+
+    let s1: Student;
+    s1 = {
+      name: "anisul islam",
+      student_id: "1302",
+    };
+    ```
+
+    ```js
+    interface IFUser {
+      name: string;
+    }
+
+    interface IFStudent extends IFUser {
+      student_id: string;
+    }
+
+    class Student implements IFStudent {
+      name: string;
+      student_id: string;
+
+      constructor(name, student_id) {
+        this.name = name;
+        this.student_id = student_id;
+      }
+
+      printDetails = () => {
+        return `${this.name}, ${this.student_id}`;
+      };
+    }
+
+    const s1 = new Student("anisul islam", "1302020017");
+    console.log(s1.printDetails());
+    ```
+
+### 1.4 tsconfig
+
+- create src, public folder
+- Inside public folder create index.html, style.css and inside src folder create index.ts or other ts files
+- in terminal -> tsc --init
+- edit tsconfig.json as shown in the following example
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./public",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  plugins: [require("tailwindcss-animate")],
+  "include": ["./src"],
+  "files": ["./src/index.ts", "./src/app.ts"]
+}
+```
+
+- run the compiler: tsc
+
+### 1.5 function
+
+Explore TypeScript function types, including defining function signatures and using optional and default parameters.
+
+Sure, let's explore functions in TypeScript with some code examples. TypeScript is a statically typed superset of JavaScript, so you'll notice type annotations to specify the types of parameters and return values. This helps catch type-related errors at compile time.
+
+**Basic Function in TypeScript:**
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+const result: number = add(5, 3); // 'result' will be 8
+```
+
+In this example:
+
+- `function add(a: number, b: number): number` defines a function named `add` that takes two parameters, `a` and `b`, both of type `number`. It also specifies that the function returns a value of type `number`.
+
+- The function body adds `a` and `b` and returns the result.
+
+- We call the `add` function with `add(5, 3)`, and the result is stored in the variable `result`.
+
+**Function with Default Parameter:**
+
+You can specify default values for function parameters:
+
+```typescript
+function greet(name: string = "User"): string {
+  return `Hello, ${name}!`;
+}
+
+const message: string = greet(); // 'message' will be "Hello, User!"
+```
+
+In this example, the `name` parameter has a default value of `"User"`. If you don't provide an argument when calling `greet`, it uses the default value.
+
+**Function with Rest Parameters:**
+
+Rest parameters allow you to pass an arbitrary number of arguments as an array:
+
+```typescript
+function sum(...numbers: number[]): number {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+const total: number = sum(1, 2, 3, 4, 5); // 'total' will be 15
+```
+
+The `...numbers` syntax collects all arguments passed to the `sum` function into an array called `numbers`.
+
+**Function with Callback:**
+
+You can pass functions as parameters to other functions:
+
+```typescript
+function calculate(
+  a: number,
+  b: number,
+  operation: (x: number, y: number) => number
+): number {
+  return operation(a, b);
+}
+
+const addition = (x: number, y: number) => x + y;
+const subtraction = (x: number, y: number) => x - y;
+
+const result1: number = calculate(5, 3, addition); // 'result1' will be 8
+const result2: number = calculate(5, 3, subtraction); // 'result2' will be 2
+```
+
+Here, the `calculate` function accepts an `operation` parameter, which is a function that takes two numbers and returns a number.
+
+**Arrow Functions:**
+
+Arrow functions provide a concise way to define functions:
+
+```typescript
+const square = (x: number): number => x * x;
+```
+
+- Function signature
+
+  ```js
+  // function signature
+  let userInfo1: () => void;
+  let userInfo2: (name: string) => void;
+  let userInfo3: (name: string) => string;
+
+  userInfo1 = () => {
+    console.log("Anisul Islam is 32 years old");
+  };
+
+  userInfo2 = (name: string) => {
+    console.log(`${name} is 32 years old`);
+  };
+
+  userInfo3 = (name: string): string => {
+    return `${name} is 32 years old`;
+  };
+
+  userInfo1();
+  userInfo2("Anisul Islam");
+  console.log(userInfo3("Anisul Islam"));
+  ```
+
+- function signature in interface
+
+```ts
+interface IUserFormatter {
+  formatUser: () => string;
+}
+
+class User implements IUserFormatter {
+  constructor(private fullName: string, private age: number) {}
+  formatUser = () => {
+    return `name: ${this.fullName}, age: ${this.age}`;
+  };
+}
+```
+
+## 2. Intermediate Typescript Topics
+
+### 2.1 Creating types from types
+
+Generics in TypeScript provide a way to create reusable, type-safe functions, classes, and interfaces that work with a variety of data types. They allow you to write code that can operate on values of different types while preserving type information. Generics are denoted using angle brackets (`<>`) and can be used with functions, classes, and interfaces.
+
+Here's an overview of how to use generics in TypeScript:
+
+**1. Generic Functions:**
+
+A generic function can accept arguments of any type while maintaining type safety. You define a generic function by placing a type parameter in angle brackets before the function's parameter list. For example:
+
+```typescript
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+// Usage
+const result1: number = identity(42); // T is inferred as 'number'
+const result2: string = identity("hello"); // T is inferred as 'string'
+```
+
+In this example, `T` is a type parameter that represents the type of the argument `arg`. The type of `T` is inferred based on the actual argument passed to the function.
+
+**2. Generic Classes:**
+
+You can create generic classes that work with different types. Here's an example of a generic class that holds a value of type `T`:
+
+```typescript
+class Box<T> {
+  private value: T;
+
+  constructor(value: T) {
+    this.value = value;
+  }
+
+  getValue(): T {
+    return this.value;
+  }
+}
+
+// Usage
+const numberBox = new Box(42); // 'T' is inferred as 'number'
+const stringBox = new Box("hello"); // 'T' is inferred as 'string'
+
+const numValue: number = numberBox.getValue();
+const strValue: string = stringBox.getValue();
+```
+
+In this case, the class `Box` is generic with a type parameter `T`. It allows you to create instances of `Box` with different types.
+
+**3. Generic Interfaces:**
+
+You can also create generic interfaces that describe the shape of objects with different types:
+
+```typescript
+interface Pair<T, U> {
+  first: T;
+  second: U;
+}
+
+const pair: Pair<number, string> = { first: 42, second: "hello" };
+```
+
+Here, the `Pair` interface is generic with two type parameters, `T` and `U`, representing the types of the `first` and `second` properties.
+
+Generics in TypeScript provide flexibility and type safety, allowing you to write more reusable and maintainable code. They are particularly useful when working with data structures, utility functions, and libraries that need to work with various types.
+
+```js
+// make components reusable
+// make components flexible
+// C# and java have this generic feature
+// generic allows us to create own types
+
+// problem without generic
+function printUserInfo(userId: string | number | null) {
+  console.log(`user id: ${userId}`);
+}
+printUserInfo("101");
+printUserInfo(101);
+printUserInfo(null);
+printUserInfo({ id: 101 });
+printUserInfo(true);
+
+const displayValue1 = (x) => {
+  return x;
+};
+// no auto suggestion for any type
+// displayValue1(20).;
+
+const displayValue2 = <T>(x: T): T => {
+  return x;
+};
+// now we will have auto suggestion
+// displayValue2(20).
+
+const addBefore = <T1>(numbers: T1[], x: T1) => {
+  return [x, ...numbers];
+};
+
+let numbers = [20, 30, 40];
+console.log(addBefore(numbers, 10));
+
+let countries = ["bangladesh", "pakistan", "India"];
+console.log(addBefore(countries, "Australia"));
+
+// Another example
+const printUserInfo = <X, Y>(userId: X, userAge: Y) => {
+  console.log(`ID : ${userId}, Age: ${userAge}`);
+};
+printUserInfo("101", 32);
+printUserInfo(101, 32);
+printUserInfo(101, "32");
+printUserInfo("101", "32");
+```
+
+#### keyof type Example
+
+The `keyof` keyword in TypeScript is used to create a union type of all the keys of an object type. It allows you to work with object keys in a type-safe way. Here's an example of how to use `keyof` in TypeScript:
+
+```typescript
+// Define an object type
+type Person = {
+  name: string;
+  age: number;
+  address: string;
+};
+
+// Use 'keyof' to create a union type of all keys in the 'Person' type
+type PersonKeys = keyof Person;
+
+// Usage example
+const person: Person = {
+  name: "Alice",
+  age: 30,
+  address: "123 Main St",
+};
+
+// Accessing properties using 'keyof' and dot notation
+const nameKey: PersonKeys = "name"; // Valid
+const ageKey: PersonKeys = "age"; // Valid
+const addressKey: PersonKeys = "address"; // Valid
+
+// The following will result in a compile error:
+// const invalidKey: PersonKeys = "email"; // Error: Type '"email"' is not assignable to type 'keyof Person'.
+```
+
+In this example:
+
+- We define an object type `Person` with properties `name`, `age`, and `address`.
+
+- We use `keyof Person` to create a type `PersonKeys`, which is a union type of all keys in the `Person` type. In this case, `PersonKeys` is equivalent to `"name" | "age" | "address"`.
+
+- We demonstrate how to use `PersonKeys` to declare variables like `nameKey`, `ageKey`, and `addressKey`, which can only be assigned keys that exist in the `Person` type.
+
+- If you attempt to assign a value that is not a valid key in the `Person` type, TypeScript will raise a compile-time error, ensuring type safety.
+
+The `keyof` type operator is useful when you want to perform operations on object keys dynamically or when you want to enforce type safety when working with object properties. It is commonly used in scenarios where you want to write code that can work with various object structures without compromising type safety.
+
+#### typeof type Example -
+
+```js
+let firstName: string;
+let lastName: typeof firstName;
+```
+
+#### Conditional type Example -
+
+```js
+interface Animal {
+  live(): void;
+}
+interface Dog extends Animal {
+  woof(): void;
+}
+
+type Example1 = Dog extends Animal ? number : string;
+
+type Example1 = number
+
+type Example2 = RegExp extends Animal ? number : string;
+
+type Example2 = string
+```
+
+### 2.2 Narrowing
+
+Narrowing in TypeScript refers to the process of refining the type of a variable or expression within a certain code block based on conditional checks. It allows you to make your code more type-safe by reducing the range of possible types for a variable when certain conditions are met. TypeScript's control flow analysis can automatically narrow the types of variables based on the context.
+
+Here's an example of narrowing in TypeScript:
+
+```typescript
+function printLength(input: string | number) {
+  if (typeof input === "string") {
+    // Inside this block, 'input' is narrowed to type 'string'
+    console.log(`Length of string: ${input.length}`);
+  } else {
+    // Inside this block, 'input' is narrowed to type 'number'
+    console.log(`Value of number: ${input}`);
+  }
+}
+
+printLength("Hello, TypeScript!"); // Output: "Length of string: 18"
+printLength(42); // Output: "Value of number: 42"
+```
+
+In this example:
+
+- The `printLength` function takes an argument `input`, which can be either a `string` or a `number`.
+
+- Inside the function, we use a conditional statement (`if`) to check the type of `input` using `typeof`. When TypeScript sees this check, it narrows the type of `input` within each branch of the conditional:
+
+  - In the first branch, where `typeof input === "string"`, TypeScript narrows `input` to type `string`. This allows us to safely access the `length` property, which is specific to strings.
+
+  - In the second branch, where `typeof input !== "string"`, TypeScript narrows `input` to type `number`.
+
+This type narrowing ensures that we can only access properties or perform operations that are valid for the narrowed type within each branch. It helps catch type-related errors at compile time and provides better type safety.
+
+TypeScript's control flow analysis is especially useful when working with union types, where you need to handle different types within the same function or code block while maintaining type safety.
+
+### 2.3 Type guards Example
+
+- type guards with typeof
+
+```js
+// type guards with typeof
+// typeof variable === string/number/boolean/symbol/undefined/object/function
+const printAllTodos = (todos: string[] | null) => {
+  if (typeof todos === "object") {
+    todos.map((todo) => console.log(todo));
+  } else {
+    console.log("todos are empty");
+  }
+};
+```
+
+#### Truthiness narrowing Example
+
+```js
+// false -> 0,NaN,"" (the empty string), 0n (the bigint version of zero), null, undefined
+const printAllTodos = (todos: string[] | null) => {
+  if (todos) {
+    todos.map((todo) => console.log(todo));
+  } else {
+    console.log("todos are empty");
+  }
+};
+
+const todos1 = null;
+const todos2 = ["todo1", "todo2", "todo3"];
+printAllTodos(todos1);
+printAllTodos(todos2);
+```
+
+#### Equality narrowing Example
+
+```js
+// == , ===, !=, !=== helps to narrow types
+```
+
+### 2.4 DOM Manipulation with typescript
+
+- Example1
+
+```html
+<body>
+  <input type="number" class="input1" placeholder="Enter any number" />
+  <input type="number" class="input2" placeholder="Enter any number" />
+  <button>Add</button>
+  <p></p>
+  <script src="./index.js"></script>
+</body>
+```
+
+```js
+const number1 = document.querySelector(".input1") as HTMLInputElement;
+const number2 = document.querySelector(".input2") as HTMLInputElement;
+const addButton = document.querySelector("button")!;
+const result = document.querySelector("p")!;
+
+addButton?.addEventListener("click", () => {
+  const sum = Number(number1.value) + Number(number2.value);
+  result.textContent = `The result is ${sum}`;
 });
 ```
 
-</details>
+- Example2
 
-<details>
-<summary><code>Clerk webhook</code></summary>
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>welcome</h1>
+    <form class="user-form">
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" id="username" />
+      </div>
+      <div>
+        <label for="useremail">email: </label>
+        <input type="email" id="useremail" />
+      </div>
 
-```typescript
-import { Webhook } from "svix";
-import { headers } from "next/headers";
-import { WebhookEvent } from "@clerk/nextjs/server";
-import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
-import { clerkClient } from "@clerk/nextjs";
-import { NextResponse } from "next/server";
+      <div>
+        <label for="country">Country: </label>
+        <select name="country" id="country">
+          <option value="bangladesh">bangladesh</option>
+          <option value="india">india</option>
+        </select>
+      </div>
 
-export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
-  const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
-
-  if (!WEBHOOK_SECRET) {
-    throw new Error(
-      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
-    );
-  }
-
-  // Get the headers
-  const headerPayload = headers();
-  const svix_id = headerPayload.get("svix-id");
-  const svix_timestamp = headerPayload.get("svix-timestamp");
-  const svix_signature = headerPayload.get("svix-signature");
-
-  // If there are no headers, error out
-  if (!svix_id || !svix_timestamp || !svix_signature) {
-    return new Response("Error occured -- no svix headers", {
-      status: 400,
-    });
-  }
-
-  // Get the body
-  const payload = await req.json();
-  const body = JSON.stringify(payload);
-
-  // Create a new Svix instance with your secret.
-  const wh = new Webhook(WEBHOOK_SECRET);
-
-  let evt: WebhookEvent;
-
-  // Verify the payload with the headers
-  try {
-    evt = wh.verify(body, {
-      "svix-id": svix_id,
-      "svix-timestamp": svix_timestamp,
-      "svix-signature": svix_signature,
-    }) as WebhookEvent;
-  } catch (err) {
-    console.error("Error verifying webhook:", err);
-    return new Response("Error occured", {
-      status: 400,
-    });
-  }
-
-  // Get the ID and type
-  const { id } = evt.data;
-  const eventType = evt.type;
-
-  if (eventType === "user.created") {
-    const { id, email_addresses, image_url, first_name, last_name, username } =
-      evt.data;
-
-    const user = {
-      clerkId: id,
-      email: email_addresses[0].email_address,
-      username: username!,
-      firstName: first_name,
-      lastName: last_name,
-      photo: image_url,
-    };
-
-    const newUser = await createUser(user);
-
-    if (newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
-        publicMetadata: {
-          userId: newUser._id,
-        },
-      });
-    }
-
-    return NextResponse.json({ message: "OK", user: newUser });
-  }
-
-  if (eventType === "user.updated") {
-    const { id, image_url, first_name, last_name, username } = evt.data;
-
-    const user = {
-      firstName: first_name,
-      lastName: last_name,
-      username: username!,
-      photo: image_url,
-    };
-
-    const updatedUser = await updateUser(id, user);
-
-    return NextResponse.json({ message: "OK", user: updatedUser });
-  }
-
-  if (eventType === "user.deleted") {
-    const { id } = evt.data;
-
-    const deletedUser = await deleteUser(id!);
-
-    return NextResponse.json({ message: "OK", user: deletedUser });
-  }
-
-  return new Response("", { status: 200 });
-}
+      <div>
+        <label for="feedback">feedback: </label>
+        <textarea name="feedback" id="feedback" cols="30" rows="5"></textarea>
+      </div>
+      <button type="submit">save</button>
+    </form>
+    <script src="../dist/index.js"></script>
+  </body>
+</html>
 ```
 
-</details>
+```ts
+const form = document.querySelector(".user-form") as HTMLFormElement;
+console.log(form);
 
-<details>
-<summary><code>user.actions.ts</code></summary>
+const userNameInput = document.querySelector("#username") as HTMLInputElement;
+console.log(userNameInput);
 
-```typescript
-"use server";
+const userEmailInput = document.querySelector("#useremail") as HTMLInputElement;
+console.log(userEmailInput);
 
-import { revalidatePath } from "next/cache";
+const userCountrySelect = document.querySelector(
+  "#country"
+) as HTMLSelectElement;
+console.log(userCountrySelect);
 
-import { connectToDatabase } from "@/lib/database";
-import User from "@/lib/database/models/user.model";
-import Order from "@/lib/database/models/order.model";
-import Event from "@/lib/database/models/event.model";
-import { handleError } from "@/lib/utils";
+const userFeedback = document.querySelector("#feedback") as HTMLTextAreaElement;
+console.log(userFeedback);
 
-import { CreateUserParams, UpdateUserParams } from "@/types";
-
-export async function createUser(user: CreateUserParams) {
-  try {
-    await connectToDatabase();
-
-    const newUser = await User.create(user);
-    return JSON.parse(JSON.stringify(newUser));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-export async function getUserById(userId: string) {
-  try {
-    await connectToDatabase();
-
-    const user = await User.findById(userId);
-
-    if (!user) throw new Error("User not found");
-    return JSON.parse(JSON.stringify(user));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-export async function updateUser(clerkId: string, user: UpdateUserParams) {
-  try {
-    await connectToDatabase();
-
-    const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
-      new: true,
-    });
-
-    if (!updatedUser) throw new Error("User update failed");
-    return JSON.parse(JSON.stringify(updatedUser));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-export async function deleteUser(clerkId: string) {
-  try {
-    await connectToDatabase();
-
-    // Find user to delete
-    const userToDelete = await User.findOne({ clerkId });
-
-    if (!userToDelete) {
-      throw new Error("User not found");
-    }
-
-    // Unlink relationships
-    await Promise.all([
-      // Update the 'events' collection to remove references to the user
-      Event.updateMany(
-        { _id: { $in: userToDelete.events } },
-        { $pull: { organizer: userToDelete._id } }
-      ),
-
-      // Update the 'orders' collection to remove references to the user
-      Order.updateMany(
-        { _id: { $in: userToDelete.orders } },
-        { $unset: { buyer: 1 } }
-      ),
-    ]);
-
-    // Delete user
-    const deletedUser = await User.findByIdAndDelete(userToDelete._id);
-    revalidatePath("/");
-
-    return deletedUser ? JSON.parse(JSON.stringify(deletedUser)) : null;
-  } catch (error) {
-    handleError(error);
-  }
-}
+form.addEventListener("submit", (e: Event) => {
+  e.preventDefault();
+  let userData = {
+    userName: userNameInput.value,
+    userEmail: userEmailInput.value,
+    userCountry: userCountrySelect.value,
+    userFeedback: userFeedback.value,
+  };
+  console.log(userData);
+});
 ```
-
-</details>
-
-<details>
-<summary><code>order.model.ts</code></summary>
-  
-```typescript
-import { Schema, model, models, Document } from 'mongoose'
-
-export interface IOrder extends Document {
-createdAt: Date
-stripeId: string
-totalAmount: string
-event: {
-\_id: string
-title: string
-}
-buyer: {
-\_id: string
-firstName: string
-lastName: string
-}
-}
-
-export type IOrderItem = {
-\_id: string
-totalAmount: string
-createdAt: Date
-eventTitle: string
-eventId: string
-buyer: string
-}
-
-const OrderSchema = new Schema({
-createdAt: {
-type: Date,
-default: Date.now,
-},
-stripeId: {
-type: String,
-required: true,
-unique: true,
-},
-totalAmount: {
-type: String,
-},
-event: {
-type: Schema.Types.ObjectId,
-ref: 'Event',
-},
-buyer: {
-type: Schema.Types.ObjectId,
-ref: 'User',
-},
-})
-
-const Order = models.Order || model('Order', OrderSchema)
-
-export default Order
-
-````
-
-</details>
-
-<details>
-<summary><code>FileUploader.tsx</code></summary>
-
-```typescript
-'use client'
-
-import { useCallback, Dispatch, SetStateAction } from 'react'
-import type { FileWithPath } from '@uploadthing/react'
-import { useDropzone } from '@uploadthing/react/hooks'
-import { generateClientDropzoneAccept } from 'uploadthing/client'
-
-import { Button } from '@/components/ui/button'
-import { convertFileToUrl } from '@/lib/utils'
-
-type FileUploaderProps = {
-  onFieldChange: (url: string) => void
-  imageUrl: string
-  setFiles: Dispatch<SetStateAction<File[]>>
-}
-
-export function FileUploader({ imageUrl, onFieldChange, setFiles }: FileUploaderProps) {
-  const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
-    setFiles(acceptedFiles)
-    onFieldChange(convertFileToUrl(acceptedFiles[0]))
-  }, [])
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: 'image/*' ? generateClientDropzoneAccept(['image/*']) : undefined,
-  })
-
-  return (
-    <div
-      {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50">
-      <input {...getInputProps()} className="cursor-pointer" />
-
-      {imageUrl ? (
-        <div className="flex h-full w-full flex-1 justify-center ">
-          <img
-            src={imageUrl}
-            alt="image"
-            width={250}
-            height={250}
-            className="w-full object-cover object-center"
-          />
-        </div>
-      ) : (
-        <div className="flex-center flex-col py-5 text-grey-500">
-          <img src="/assets/icons/upload.svg" width={77} height={77} alt="file upload" />
-          <h3 className="mb-2 mt-2">Drag photo here</h3>
-          <p className="p-medium-12 mb-4">SVG, PNG, JPG</p>
-          <Button type="button" className="rounded-full">
-            Select from computer
-          </Button>
-        </div>
-      )}
-    </div>
-  )
-}
-````
-
-</details>
-
-<details>
-<summary><code>DeleteConfirmation.tsx</code></summary>
-
-```typescript
-"use client";
-
-import { useTransition } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
-import { deleteEvent } from "@/lib/actions/event.actions";
-
-export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
-  const pathname = usePathname();
-  let [isPending, startTransition] = useTransition();
-
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger>
-        <Image
-          src="/assets/icons/delete.svg"
-          alt="edit"
-          width={20}
-          height={20}
-        />
-      </AlertDialogTrigger>
-
-      <AlertDialogContent className="bg-white">
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure you want to delete?</AlertDialogTitle>
-          <AlertDialogDescription className="p-regular-16 text-grey-600">
-            This will permanently delete this event
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-
-          <AlertDialogAction
-            onClick={() =>
-              startTransition(async () => {
-                await deleteEvent({ eventId, path: pathname });
-              })
-            }
-          >
-            {isPending ? "Deleting..." : "Delete"}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-};
-```
-
-</details>
-
-<details>
-<summary><code>event.action.ts</code></summary>
-
-```typescript
-"use server";
-
-import { revalidatePath } from "next/cache";
-
-import { connectToDatabase } from "@/lib/database";
-import Event from "@/lib/database/models/event.model";
-import User from "@/lib/database/models/user.model";
-import Category from "@/lib/database/models/category.model";
-import { handleError } from "@/lib/utils";
-
-import {
-  CreateEventParams,
-  UpdateEventParams,
-  DeleteEventParams,
-  GetAllEventsParams,
-  GetEventsByUserParams,
-  GetRelatedEventsByCategoryParams,
-} from "@/types";
-
-const getCategoryByName = async (name: string) => {
-  return Category.findOne({ name: { $regex: name, $options: "i" } });
-};
-
-const populateEvent = (query: any) => {
-  return query
-    .populate({
-      path: "organizer",
-      model: User,
-      select: "_id firstName lastName",
-    })
-    .populate({ path: "category", model: Category, select: "_id name" });
-};
-
-// CREATE
-export async function createEvent({ userId, event, path }: CreateEventParams) {
-  try {
-    await connectToDatabase();
-
-    const organizer = await User.findById(userId);
-    if (!organizer) throw new Error("Organizer not found");
-
-    const newEvent = await Event.create({
-      ...event,
-      category: event.categoryId,
-      organizer: userId,
-    });
-    revalidatePath(path);
-
-    return JSON.parse(JSON.stringify(newEvent));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// GET ONE EVENT BY ID
-export async function getEventById(eventId: string) {
-  try {
-    await connectToDatabase();
-
-    const event = await populateEvent(Event.findById(eventId));
-
-    if (!event) throw new Error("Event not found");
-
-    return JSON.parse(JSON.stringify(event));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// UPDATE
-export async function updateEvent({ userId, event, path }: UpdateEventParams) {
-  try {
-    await connectToDatabase();
-
-    const eventToUpdate = await Event.findById(event._id);
-    if (!eventToUpdate || eventToUpdate.organizer.toHexString() !== userId) {
-      throw new Error("Unauthorized or event not found");
-    }
-
-    const updatedEvent = await Event.findByIdAndUpdate(
-      event._id,
-      { ...event, category: event.categoryId },
-      { new: true }
-    );
-    revalidatePath(path);
-
-    return JSON.parse(JSON.stringify(updatedEvent));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// DELETE
-export async function deleteEvent({ eventId, path }: DeleteEventParams) {
-  try {
-    await connectToDatabase();
-
-    const deletedEvent = await Event.findByIdAndDelete(eventId);
-    if (deletedEvent) revalidatePath(path);
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// GET ALL EVENTS
-export async function getAllEvents({
-  query,
-  limit = 6,
-  page,
-  category,
-}: GetAllEventsParams) {
-  try {
-    await connectToDatabase();
-
-    const titleCondition = query
-      ? { title: { $regex: query, $options: "i" } }
-      : {};
-    const categoryCondition = category
-      ? await getCategoryByName(category)
-      : null;
-    const conditions = {
-      $and: [
-        titleCondition,
-        categoryCondition ? { category: categoryCondition._id } : {},
-      ],
-    };
-
-    const skipAmount = (Number(page) - 1) * limit;
-    const eventsQuery = Event.find(conditions)
-      .sort({ createdAt: "desc" })
-      .skip(skipAmount)
-      .limit(limit);
-
-    const events = await populateEvent(eventsQuery);
-    const eventsCount = await Event.countDocuments(conditions);
-
-    return {
-      data: JSON.parse(JSON.stringify(events)),
-      totalPages: Math.ceil(eventsCount / limit),
-    };
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// GET EVENTS BY ORGANIZER
-export async function getEventsByUser({
-  userId,
-  limit = 6,
-  page,
-}: GetEventsByUserParams) {
-  try {
-    await connectToDatabase();
-
-    const conditions = { organizer: userId };
-    const skipAmount = (page - 1) * limit;
-
-    const eventsQuery = Event.find(conditions)
-      .sort({ createdAt: "desc" })
-      .skip(skipAmount)
-      .limit(limit);
-
-    const events = await populateEvent(eventsQuery);
-    const eventsCount = await Event.countDocuments(conditions);
-
-    return {
-      data: JSON.parse(JSON.stringify(events)),
-      totalPages: Math.ceil(eventsCount / limit),
-    };
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// GET RELATED EVENTS: EVENTS WITH SAME CATEGORY
-export async function getRelatedEventsByCategory({
-  categoryId,
-  eventId,
-  limit = 3,
-  page = 1,
-}: GetRelatedEventsByCategoryParams) {
-  try {
-    await connectToDatabase();
-
-    const skipAmount = (Number(page) - 1) * limit;
-    const conditions = {
-      $and: [{ category: categoryId }, { _id: { $ne: eventId } }],
-    };
-
-    const eventsQuery = Event.find(conditions)
-      .sort({ createdAt: "desc" })
-      .skip(skipAmount)
-      .limit(limit);
-
-    const events = await populateEvent(eventsQuery);
-    const eventsCount = await Event.countDocuments(conditions);
-
-    return {
-      data: JSON.parse(JSON.stringify(events)),
-      totalPages: Math.ceil(eventsCount / limit),
-    };
-  } catch (error) {
-    handleError(error);
-  }
-}
-```
-
-</details>
-
-<details>
-<summary><code>order.action.ts</code></summary>
-
-```typescript
-"use server";
-
-import Stripe from "stripe";
-import {
-  CheckoutOrderParams,
-  CreateOrderParams,
-  GetOrdersByEventParams,
-  GetOrdersByUserParams,
-} from "@/types";
-import { redirect } from "next/navigation";
-import { handleError } from "../utils";
-import { connectToDatabase } from "../database";
-import Order from "../database/models/order.model";
-import Event from "../database/models/event.model";
-import { ObjectId } from "mongodb";
-import User from "../database/models/user.model";
-
-export const checkoutOrder = async (order: CheckoutOrderParams) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-  const price = order.isFree ? 0 : Number(order.price) * 100;
-
-  try {
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            unit_amount: price,
-            product_data: {
-              name: order.eventTitle,
-            },
-          },
-          quantity: 1,
-        },
-      ],
-      metadata: {
-        eventId: order.eventId,
-        buyerId: order.buyerId,
-      },
-      mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
-    });
-
-    redirect(session.url!);
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const createOrder = async (order: CreateOrderParams) => {
-  try {
-    await connectToDatabase();
-
-    const newOrder = await Order.create({
-      ...order,
-      event: order.eventId,
-      buyer: order.buyerId,
-    });
-
-    return JSON.parse(JSON.stringify(newOrder));
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-// GET ORDERS BY EVENT
-export async function getOrdersByEvent({
-  searchString,
-  eventId,
-}: GetOrdersByEventParams) {
-  try {
-    await connectToDatabase();
-
-    if (!eventId) throw new Error("Event ID is required");
-    const eventObjectId = new ObjectId(eventId);
-
-    const orders = await Order.aggregate([
-      {
-        $lookup: {
-          from: "users",
-          localField: "buyer",
-          foreignField: "_id",
-          as: "buyer",
-        },
-      },
-      {
-        $unwind: "$buyer",
-      },
-      {
-        $lookup: {
-          from: "events",
-          localField: "event",
-          foreignField: "_id",
-          as: "event",
-        },
-      },
-      {
-        $unwind: "$event",
-      },
-      {
-        $project: {
-          _id: 1,
-          totalAmount: 1,
-          createdAt: 1,
-          eventTitle: "$event.title",
-          eventId: "$event._id",
-          buyer: {
-            $concat: ["$buyer.firstName", " ", "$buyer.lastName"],
-          },
-        },
-      },
-      {
-        $match: {
-          $and: [
-            { eventId: eventObjectId },
-            { buyer: { $regex: RegExp(searchString, "i") } },
-          ],
-        },
-      },
-    ]);
-
-    return JSON.parse(JSON.stringify(orders));
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-// GET ORDERS BY USER
-export async function getOrdersByUser({
-  userId,
-  limit = 3,
-  page,
-}: GetOrdersByUserParams) {
-  try {
-    await connectToDatabase();
-
-    const skipAmount = (Number(page) - 1) * limit;
-    const conditions = { buyer: userId };
-
-    const orders = await Order.distinct("event._id")
-      .find(conditions)
-      .sort({ createdAt: "desc" })
-      .skip(skipAmount)
-      .limit(limit)
-      .populate({
-        path: "event",
-        model: Event,
-        populate: {
-          path: "organizer",
-          model: User,
-          select: "_id firstName lastName",
-        },
-      });
-
-    const ordersCount = await Order.distinct("event._id").countDocuments(
-      conditions
-    );
-
-    return {
-      data: JSON.parse(JSON.stringify(orders)),
-      totalPages: Math.ceil(ordersCount / limit),
-    };
-  } catch (error) {
-    handleError(error);
-  }
-}
-```
-
-</details>
-
-<details>
-<summary><code>orders/page.tsx</code></summary>
-
-```typescript
-import Search from "@/components/shared/Search";
-import { getOrdersByEvent } from "@/lib/actions/order.actions";
-import { formatDateTime, formatPrice } from "@/lib/utils";
-import { SearchParamProps } from "@/types";
-import { IOrderItem } from "@/lib/database/models/order.model";
-
-const Orders = async ({ searchParams }: SearchParamProps) => {
-  const eventId = (searchParams?.eventId as string) || "";
-  const searchText = (searchParams?.query as string) || "";
-
-  const orders = await getOrdersByEvent({ eventId, searchString: searchText });
-
-  return (
-    <>
-      <section className=" bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <h3 className="wrapper h3-bold text-center sm:text-left ">Orders</h3>
-      </section>
-
-      <section className="wrapper mt-8">
-        <Search placeholder="Search buyer name..." />
-      </section>
-
-      <section className="wrapper overflow-x-auto">
-        <table className="w-full border-collapse border-t">
-          <thead>
-            <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[250px] py-3 text-left">Order ID</th>
-              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
-                Event Title
-              </th>
-              <th className="min-w-[150px] py-3 text-left">Buyer</th>
-              <th className="min-w-[100px] py-3 text-left">Created</th>
-              <th className="min-w-[100px] py-3 text-right">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders && orders.length === 0 ? (
-              <tr className="border-b">
-                <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No orders found.
-                </td>
-              </tr>
-            ) : (
-              <>
-                {orders &&
-                  orders.map((row: IOrderItem) => (
-                    <tr
-                      key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b "
-                      style={{ boxSizing: "border-box" }}
-                    >
-                      <td className="min-w-[250px] py-4 text-primary-500">
-                        {row._id}
-                      </td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">
-                        {row.eventTitle}
-                      </td>
-                      <td className="min-w-[150px] py-4">{row.buyer}</td>
-                      <td className="min-w-[100px] py-4">
-                        {formatDateTime(row.createdAt).dateTime}
-                      </td>
-                      <td className="min-w-[100px] py-4 text-right">
-                        {formatPrice(row.totalAmount)}
-                      </td>
-                    </tr>
-                  ))}
-              </>
-            )}
-          </tbody>
-        </table>
-      </section>
-    </>
-  );
-};
-
-export default Orders;
-```
-
-</details>
-
-## <a name="links">🔗 Links</a>
-
-All assets used in the project can be found [here](https://drive.google.com/file/d/1hoRwUtTFIiuOXPw-SDYj6wk4hZTMcYmL/view?usp=sharing)
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js 14 Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsmastery.pro/next14" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/557837ce-f612-4530-ab24-189e75133c71" alt="Project Banner">
-</a>
-
-<br />
-<br />
-
-**Accelerate your professional journey with Expert Training program**
-
-And if you're hungry for more than just a course and want to understand how we learn and tackle tech challenges, hop into our personalized masterclass. We cover best practices, different web skills, and offer mentorship to boost your confidence. Let's learn and grow together!
-
-<a href="https://www.jsmastery.pro/masterclass" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/fed352ad-f27b-400d-9b8f-c7fe628acb84" alt="Project Banner">
-</a>
-
-#
