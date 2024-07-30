@@ -28,9 +28,9 @@
 
 3. [Advanced TypeScript Topics]()
 
-## 1. Basic Typescript Topics
+# 1. Basic Typescript Topics
 
-### 1.1 Introduction to Typescript
+## 1.1 Introduction to Typescript
 
 What is TypeScript?
 
@@ -218,7 +218,7 @@ These basic types provide a foundation for specifying the types of variables and
   let userName = "anis"; // data type inferred as string
   ```
 
-### 1.3 Data Types: User defined
+## 1.3 Data Types: User defined
 
 8. **class Type OOP** - You can create class type as well. class can have constructor, properties, methods. create object let objectName = new className()
 
