@@ -28,9 +28,9 @@
 
 3. [Advanced TypeScript Topics]()
 
-## 1. Basic Typescript Topics
+# 1. Basic Typescript Topics
 
-### 1.1 Introduction to Typescript
+## 1.1 Introduction to Typescript
 
 What is TypeScript?
 
@@ -148,7 +148,7 @@ First typescript program
   name. //intellisense support will be here
   ```
 
-### 1.2 Data Types: Built-in / Basic Types
+## 1.2 Data Types: Built-in / Basic Types
 
 - Any (super type)
   - built in types: number, string, boolean, void, null, undefined, never
@@ -218,417 +218,417 @@ These basic types provide a foundation for specifying the types of variables and
   let userName = "anis"; // data type inferred as string
   ```
 
-### 1.3 Data Types: User defined
+## 1.3 Data Types: User defined
 
-1. **union**: Union Type - more than one type for variable or function parameter. Program - odd/even for number and string to give idea about this union concept.
+### 1. **union**: Union Type - more than one type for variable or function parameter. Program - odd/even for number and string to give idea about this union concept.
 
-   ```js
-   let userId: string | number;
+```js
+let userId: string | number;
 
-   // userId = 101; // no error
-   // userId = "101"; // no error
-   // userId = true; // error
+// userId = 101; // no error
+// userId = "101"; // no error
+// userId = true; // error
 
-   function userIdDataType(userId: string | number) {
-     console.log(typeof userId);
-   }
+function userIdDataType(userId: string | number) {
+  console.log(typeof userId);
+}
 
-   userIdDataType("123"); // no error
-   userIdDataType(123); // no error
-   // userIdDataType(true); // error
+userIdDataType("123"); // no error
+userIdDataType(123); // no error
+// userIdDataType(true); // error
 
-   const isEven = (num: number | string) => {
-     if (typeof num === "number") {
-       console.log(typeof num);
-       return num % 2 === 0 ? "even" : "odd";
-     } else {
-       console.log(typeof num);
-       return Number(num) % 2 === 0 ? "even" : "odd";
-     }
-   };
+const isEven = (num: number | string) => {
+  if (typeof num === "number") {
+    console.log(typeof num);
+    return num % 2 === 0 ? "even" : "odd";
+  } else {
+    console.log(typeof num);
+    return Number(num) % 2 === 0 ? "even" : "odd";
+  }
+};
 
-   console.log(isEven(32));
-   console.log(isEven("32"));
-   ```
+console.log(isEven(32));
+console.log(isEven("32"));
+```
 
-2. **object**: Represents any non-primitive value.
+### 2. **object**: Represents any non-primitive value.
 
-   ```typescript
-   let person: object = { name: "Alice", age: 30 };
+```typescript
+let person: object = { name: "Alice", age: 30 };
 
-   let user: {
-     name: string;
-     age: number;
-   };
+let user: {
+  name: string;
+  age: number;
+};
 
-   user = {
-     name: "anisul islam",
-     age: 32,
-   };
+user = {
+  name: "anisul islam",
+  age: 32,
+};
 
-   let names: object;
-   names = { name1: "anis" };
-   console.log(names);
+let names: object;
+names = { name1: "anis" };
+console.log(names);
 
-   let users: object[];
-   users = [];
+let users: object[];
+users = [];
 
-   let user1: { userName: string; userId: number };
-   user1 = { userName: "anis", userId: 101 };
-   users.push(user1);
+let user1: { userName: string; userId: number };
+user1 = { userName: "anis", userId: 101 };
+users.push(user1);
 
-   let user2: { userName: string; userId: number };
-   user2 = { userName: "rabu", userId: 102 };
+let user2: { userName: string; userId: number };
+user2 = { userName: "rabu", userId: 102 };
 
-   users.push(user2);
+users.push(user2);
 
-   for (const key in users) {
-     console.log(users[key]["userName"]);
-   }
-   ```
+for (const key in users) {
+  console.log(users[key]["userName"]);
+}
+```
 
-3. **array**: Represents an array of values of a specific type. 2 ways to declare: `number[]` or `Array<number>`
+### 3. **array**: Represents an array of values of a specific type. 2 ways to declare: `number[]` or `Array<number>`
 
-   ```typescript
-   let numbers: number[] = [1, 2, 3, 4, 5];
+```typescript
+let numbers: number[] = [1, 2, 3, 4, 5];
 
-   // let users = ["anis", "rabu", "pinky"];
+// let users = ["anis", "rabu", "pinky"];
 
-   // let users: string[];
-   // users = ["anis", "rabu", "pinky"];
+// let users: string[];
+// users = ["anis", "rabu", "pinky"];
 
-   let users: Array<string>;
-   users = ["anis", "rabu", "pinky"];
+let users: Array<string>;
+users = ["anis", "rabu", "pinky"];
 
-   // for (let index = 0; index < users.length; index++) {
-   //   const element = users[index];
-   //   console.log(element);
-   // }
+// for (let index = 0; index < users.length; index++) {
+//   const element = users[index];
+//   console.log(element);
+// }
 
-   // users.forEach((element) => {
-   //   console.log(element);
-   // });
+// users.forEach((element) => {
+//   console.log(element);
+// });
 
-   users.sort();
-   console.log(users);
+users.sort();
+console.log(users);
 
-   users.push("limon");
-   console.log(users);
+users.push("limon");
+console.log(users);
 
-   users.pop();
-   console.log(users);
+users.pop();
+console.log(users);
 
-   users.unshift("milton");
-   console.log(users);
-
-   users.shift();
-   console.log(users);
-
-   // multi-types array
-   // let users: (number | string)[];
-   // users = [10, "anis", 25, 35, "islam"];
-   ```
-
-4. **tuple**: Represents an array with a fixed number of elements, each with a specific type.
-
-   ```typescript
-   let employee: [string, number] = ["John Doe", 30];
-
-   let users: [number, String];
-   users = [101, "anis"];
-
-   console.log(users);
-   console.log(users[0]);
-   console.log(users[1]);
-
-   users.push(102, "sakib");
-   console.log(users);
-   ```
-
-5. **enum**: Represents a set of named constants. no duplicate data.
-
-   ```typescript
-   enum Color {
-     Red,
-     Green,
-     Blue,
-   }
-
-   let selectedColor: Color = Color.Red;
-
-   // enum example
-   // helps us to store constants
-
-   // numeric enum
-   enum UserRequest {
-     ReadData,
-     // ReadData = 2,
-     SaveData,
-     UpdateData,
-   }
+users.unshift("milton");
+console.log(users);
+
+users.shift();
+console.log(users);
+
+// multi-types array
+// let users: (number | string)[];
+// users = [10, "anis", 25, 35, "islam"];
+```
+
+### 4. **tuple**: Represents an array with a fixed number of elements, each with a specific type.
+
+```typescript
+let employee: [string, number] = ["John Doe", 30];
+
+let users: [number, String];
+users = [101, "anis"];
+
+console.log(users);
+console.log(users[0]);
+console.log(users[1]);
+
+users.push(102, "sakib");
+console.log(users);
+```
+
+### 5. **enum**: Represents a set of named constants. no duplicate data.
+
+```typescript
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+
+let selectedColor: Color = Color.Red;
+
+// enum example
+// helps us to store constants
+
+// numeric enum
+enum UserRequest {
+  ReadData,
+  // ReadData = 2,
+  SaveData,
+  UpdateData,
+}
 
-   console.log(UserRequest);
-   console.log(UserRequest.ReadData);
-   console.log(UserRequest.SaveData);
-
-   // string enum
-   enum UserRequest {
-     ReadData = "READ_DATA",
-     // ReadData = 2,
-     SaveData = "SAVE_DATA",
-     UpdateData = "UPDATE_DATA",
-   }
-
-   console.log(UserRequest);
-   console.log(UserRequest.ReadData);
-   console.log(UserRequest.SaveData);
-   console.log(UserRequest["UpdateData"]);
-
-   // Heterogeneous enum
-   enum User {
-     id = 101,
-     name = "anisul",
-   }
-   ```
+console.log(UserRequest);
+console.log(UserRequest.ReadData);
+console.log(UserRequest.SaveData);
+
+// string enum
+enum UserRequest {
+  ReadData = "READ_DATA",
+  // ReadData = 2,
+  SaveData = "SAVE_DATA",
+  UpdateData = "UPDATE_DATA",
+}
+
+console.log(UserRequest);
+console.log(UserRequest.ReadData);
+console.log(UserRequest.SaveData);
+console.log(UserRequest["UpdateData"]);
+
+// Heterogeneous enum
+enum User {
+  id = 101,
+  name = "anisul",
+}
+```
 
-6. **Intersection**: In TypeScript, you can use intersection types to combine multiple types into a single type that has all the properties and methods of each type. Intersection types are created using the `&` operator. Here's an example:
-
-   ```typescript
-   // Define two types
-   type Employee = {
-     name: string;
-     role: string;
-   };
-
-   type Manager = {
-     department: string;
-     employeesManaged: number;
-   };
-
-   // Create an intersection type
-   type ManagerWithEmployeeInfo = Employee & Manager;
-
-   // Create an object that conforms to the intersection type
-   const manager: ManagerWithEmployeeInfo = {
-     name: "Alice",
-     role: "Manager",
-     department: "HR",
-     employeesManaged: 10,
-   };
-
-   // Access properties
-   console.log(manager.name); // Alice
-   console.log(manager.role); // Manager
-   console.log(manager.department); // HR
-   console.log(manager.employeesManaged); // 10
-   ```
-
-   In this example, we define two types: `Employee` and `Manager`. Then, we create an intersection type called `ManagerWithEmployeeInfo` by combining `Employee` and `Manager` using the `&` operator. The resulting type, `ManagerWithEmployeeInfo`, has all the properties of both `Employee` and `Manager`.
-
-   When we create an object (`manager`) that conforms to the `ManagerWithEmployeeInfo` type, it must have all the properties defined in both `Employee` and `Manager`. This allows us to create objects that have a combination of properties from different types, providing flexibility and type safety.
-
-   Intersection types are especially useful when you want to compose types to represent complex objects or data structures in your TypeScript code.
-
-7. **Custom Type**: you can create your own type
-
-   ```js
-   type User = { userName: string, userId: number };
-
-   let users: User[];
-   users = [];
-
-   let user1: User;
-   user1 = { userName: "anis", userId: 101 };
-   users.push(user1);
-
-   let user2: User;
-   user2 = { userName: "rabu", userId: 102 };
-   users.push(user2);
-
-   let user3: User;
-   user3 = { userName: "lucky", userId: 103 };
-   users.push(user3);
-
-   // console.log(users);
-
-   type RequestType = "GET" | "POST";
-   let getRequest: RequestType;
-   getRequest = "GET";
-
-   function requestHandler(requestType: RequestType) {
-     console.log(requestType);
-   }
-   requestHandler("GET");
-   ```
-
-8. **class Type OOP** - You can create class type as well. class can have constructor, properties, methods. create object let objectName = new className()
-
-   - Class and constructor Example
-
-   ```js
-   class User {
-     // properties, methods, constructor
-     userName: string;
-     age: number;
-
-     constructor(userName: string, age: number) {
-       this.userName = userName;
-       this.age = age;
-     }
-
-     display(): void {
-       console.log(`username: ${this.userName}, age: ${this.age}`);
-     }
-   }
-
-   let user1 = new User("Anisul Islam", 25);
-   user1.display();
-
-   let user2 = new User("Rabeya Islam", 31);
-   user2.display();
-   ```
-
-   - Inheritance: inheritance helps us to acquire properties of one class to another
-
-   ```js
-   class User {
-     userName: string;
-     age: number;
-
-     constructor(userName: string, age: number) {
-       this.userName = userName;
-       this.age = age;
-     }
-
-     display(): void {
-       console.log(`username: ${this.userName}, age: ${this.age}`);
-     }
-   }
-
-   class Student extends User {
-     studentId: number;
-
-     constructor(userName: string, age: number, studentId: number) {
-       super(userName, age);
-       this.studentId = studentId;
-     }
-     display(): void {
-       console.log(
-         `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
-       );
-     }
-   }
-
-   let student1 = new Student("keya", 31, 1302020015);
-   student1.display();
-
-   let user1 = new User("Anisul Islam", 25);
-   user1.display();
-
-   // let user2 = new User("Rabeya Islam", 31);
-   // user2.display();
-   ```
-
-   - **Abstract class** - abstraction helps us to hide the implementation of something. class declared with abstract keyword. object can not be created from abstract class. if a class extends abstract class; it must inherit all the abstract methods
-
-   ```js
-   abstract class User {
-     userName: string;
-     age: number;
-
-     constructor(userName: string, age: number) {
-       this.userName = userName;
-       this.age = age;
-     }
-
-     abstract display(): void;
-   }
-
-   class Student extends User {
-     studentId: number;
-
-     constructor(userName: string, age: number, studentId: number) {
-       super(userName, age);
-       this.studentId = studentId;
-     }
-     display(): void {
-       console.log(
-         `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
-       );
-     }
-   }
-
-   let student1 = new Student("keya", 31, 1302020015);
-   student1.display();
-
-   ```
-
-   - **Encapsulation and access modifiers** - 4 key principles of Object Oriented Programming (OOP): Inheritance, Abstraction, Encapsulation, Polymorphism. Encapsulation helps us to manage the visibility of class members. 4 Access modifiers: public, private, protected, readonly
-
-   ![Access Modifiers](images/access-modifiers.png)
-
-   ```js
-     // public, private, protected, readonly
-     // setter and getter
-     class User {
-       readonly userName: string;
-       public age: number;
-
-       constructor(userName: string, age: number) {
-         this.userName = userName;
-         this.age = age;
-       }
-
-       display(): void {
-         console.log(`username: ${this.userName}, age: ${this.age}`);
-       }
-     }
-
-     class Student extends User {
-       private studentId: number;
-
-       constructor(userName: string, age: number, studentId: number) {
-         super(userName, age);
-         this.studentId = studentId;
-       }
-       display(): void {
-         console.log(
-           `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
-         );
-       }
-
-       setStudentId(studentId: number): void {
-         this.studentId = studentId;
-       }
-
-       getStudentId(): number {
-         return this.studentId;
-       }
-     }
-
-     let student1 = new Student("keya", 31, 1302020015);
-     student1.setStudentId(1302020017);
-     console.log(student1.getStudentId());
-     // student1.display();
-
-     let user1 = new User("robi", 23);
-     console.log(user1.userName);
-     // user1.display();
-   ```
-
-### Inheritance
+### 6. **Intersection**: In TypeScript, you can use intersection types to combine multiple types into a single type that has all the properties and methods of each type. Intersection types are created using the `&` operator. Here's an example:
+
+```typescript
+// Define two types
+type Employee = {
+  name: string;
+  role: string;
+};
+
+type Manager = {
+  department: string;
+  employeesManaged: number;
+};
+
+// Create an intersection type
+type ManagerWithEmployeeInfo = Employee & Manager;
+
+// Create an object that conforms to the intersection type
+const manager: ManagerWithEmployeeInfo = {
+  name: "Alice",
+  role: "Manager",
+  department: "HR",
+  employeesManaged: 10,
+};
+
+// Access properties
+console.log(manager.name); // Alice
+console.log(manager.role); // Manager
+console.log(manager.department); // HR
+console.log(manager.employeesManaged); // 10
+```
+
+In this example, we define two types: `Employee` and `Manager`. Then, we create an intersection type called `ManagerWithEmployeeInfo` by combining `Employee` and `Manager` using the `&` operator. The resulting type, `ManagerWithEmployeeInfo`, has all the properties of both `Employee` and `Manager`.
+
+When we create an object (`manager`) that conforms to the `ManagerWithEmployeeInfo` type, it must have all the properties defined in both `Employee` and `Manager`. This allows us to create objects that have a combination of properties from different types, providing flexibility and type safety.
+
+Intersection types are especially useful when you want to compose types to represent complex objects or data structures in your TypeScript code.
+
+### 7. **Custom Type**: you can create your own type
+
+```js
+type User = { userName: string, userId: number };
+
+let users: User[];
+users = [];
+
+let user1: User;
+user1 = { userName: "anis", userId: 101 };
+users.push(user1);
+
+let user2: User;
+user2 = { userName: "rabu", userId: 102 };
+users.push(user2);
+
+let user3: User;
+user3 = { userName: "lucky", userId: 103 };
+users.push(user3);
+
+// console.log(users);
+
+type RequestType = "GET" | "POST";
+let getRequest: RequestType;
+getRequest = "GET";
+
+function requestHandler(requestType: RequestType) {
+  console.log(requestType);
+}
+requestHandler("GET");
+```
+
+### 8. **class Type OOP** - You can create class type as well. class can have constructor, properties, methods. create object let objectName = new className()
+
+- Class and constructor Example
+
+```js
+class User {
+  // properties, methods, constructor
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  display(): void {
+    console.log(`username: ${this.userName}, age: ${this.age}`);
+  }
+}
+
+let user1 = new User("Anisul Islam", 25);
+user1.display();
+
+let user2 = new User("Rabeya Islam", 31);
+user2.display();
+```
+
+- Inheritance: inheritance helps us to acquire properties of one class to another
+
+```js
+class User {
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  display(): void {
+    console.log(`username: ${this.userName}, age: ${this.age}`);
+  }
+}
+
+class Student extends User {
+  studentId: number;
+
+  constructor(userName: string, age: number, studentId: number) {
+    super(userName, age);
+    this.studentId = studentId;
+  }
+  display(): void {
+    console.log(
+      `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+    );
+  }
+}
+
+let student1 = new Student("keya", 31, 1302020015);
+student1.display();
+
+let user1 = new User("Anisul Islam", 25);
+user1.display();
+
+// let user2 = new User("Rabeya Islam", 31);
+// user2.display();
+```
+
+#### - **Abstract class** - abstraction helps us to hide the implementation of something. class declared with abstract keyword. object can not be created from abstract class. if a class extends abstract class; it must inherit all the abstract methods
+
+```js
+abstract class User {
+  userName: string;
+  age: number;
+
+  constructor(userName: string, age: number) {
+    this.userName = userName;
+    this.age = age;
+  }
+
+  abstract display(): void;
+}
+
+class Student extends User {
+  studentId: number;
+
+  constructor(userName: string, age: number, studentId: number) {
+    super(userName, age);
+    this.studentId = studentId;
+  }
+  display(): void {
+    console.log(
+      `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+    );
+  }
+}
+
+let student1 = new Student("keya", 31, 1302020015);
+student1.display();
+
+```
+
+#### - **Encapsulation and access modifiers** - 4 key principles of Object Oriented Programming (OOP): Inheritance, Abstraction, Encapsulation, Polymorphism. Encapsulation helps us to manage the visibility of class members. 4 Access modifiers: public, private, protected, readonly
+
+![Access Modifiers](images/access-modifiers.png)
+
+```js
+  // public, private, protected, readonly
+  // setter and getter
+  class User {
+    readonly userName: string;
+    public age: number;
+
+    constructor(userName: string, age: number) {
+      this.userName = userName;
+      this.age = age;
+    }
+
+    display(): void {
+      console.log(`username: ${this.userName}, age: ${this.age}`);
+    }
+  }
+
+  class Student extends User {
+    private studentId: number;
+
+    constructor(userName: string, age: number, studentId: number) {
+      super(userName, age);
+      this.studentId = studentId;
+    }
+    display(): void {
+      console.log(
+        `username: ${this.userName}, age: ${this.age}, id: ${this.studentId}`
+      );
+    }
+
+    setStudentId(studentId: number): void {
+      this.studentId = studentId;
+    }
+
+    getStudentId(): number {
+      return this.studentId;
+    }
+  }
+
+  let student1 = new Student("keya", 31, 1302020015);
+  student1.setStudentId(1302020017);
+  console.log(student1.getStudentId());
+  // student1.display();
+
+  let user1 = new User("robi", 23);
+  console.log(user1.userName);
+  // user1.display();
+```
+
+##### - Inheritance
 
 Inheritance allows a class to inherit properties and methods from another class.
 
-### Encapsulation
+##### - Encapsulation
 
 Encapsulation restricts direct access to some of an object's components, which can be achieved using access modifiers (`private`, `protected`, `public`).
 
-### Polymorphism
+##### - Polymorphism
 
 Polymorphism allows methods to do different things based on the object it is acting upon, even though they share the same name.
 
-### Abstraction
+##### - Abstraction
 
 Abstraction allows you to define methods that must be created within any child classes built from the abstract class.
 
@@ -711,7 +711,7 @@ console.log(student.name); // Alice
 console.log(teacher.subject); // Mathematics
 ```
 
-### Explanation
+##### - Explanation
 
 1. **Abstraction**:
 
@@ -734,83 +734,83 @@ console.log(teacher.subject); // Mathematics
 
 This example demonstrates how you can use these OOP principles in TypeScript to create a well-structured and maintainable codebase.
 
-9. **Interface type**
+### 9. **Interface type**
 
-   ```js
-   // without interface
-   let users: {
-     id: number,
-     name: string,
-     age: number,
-   }[] = [];
+```js
+// without interface
+let users: {
+  id: number,
+  name: string,
+  age: number,
+}[] = [];
 
-   let user1: {
-     id: number,
-     name: string,
-     age: number,
-   } = {
-     id: 1,
-     name: "Mr. Potato",
-     age: 32,
-   };
+let user1: {
+  id: number,
+  name: string,
+  age: number,
+} = {
+  id: 1,
+  name: "Mr. Potato",
+  age: 32,
+};
 
-   let user2: {
-     id: number,
-     name: string,
-     age: number,
-   } = { id: 2, name: "Ms. Tomato", age: 21 };
+let user2: {
+  id: number,
+  name: string,
+  age: number,
+} = { id: 2, name: "Ms. Tomato", age: 21 };
 
-   users.push(user1);
-   users.push(user2);
+users.push(user1);
+users.push(user2);
 
-   const printUserInfo = (user: { id: number, name: string, age: number }) => {
-     console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
-   };
+const printUserInfo = (user: { id: number, name: string, age: number }) => {
+  console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+};
 
-   users.forEach((user) => printUserInfo(user));
+users.forEach((user) => printUserInfo(user));
 
-   // with interface
-   interface User {
-     id: number;
-     name: string;
-     age: number;
-   }
+// with interface
+interface User {
+  id: number;
+  name: string;
+  age: number;
+}
 
-   let users: User[] = [];
+let users: User[] = [];
 
-   let user1: User = { id: 1, name: "Mr. Potato", age: 32 };
-   let user2: User = { id: 2, name: "Ms. Tomato", age: 21 };
+let user1: User = { id: 1, name: "Mr. Potato", age: 32 };
+let user2: User = { id: 2, name: "Ms. Tomato", age: 21 };
 
-   users.push(user1);
-   users.push(user2);
+users.push(user1);
+users.push(user2);
 
-   const printUserInfo = (user: User) => {
-     console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
-   };
+const printUserInfo = (user: User) => {
+  console.log(`userid = ${user.id}, name = ${user.name}, age = ${user.age}`);
+};
 
-   users.forEach((user) => printUserInfo(user));
-   ```
+users.forEach((user) => printUserInfo(user));
+```
 
-   ```js
-       // class implements interface
-       interface UserFormatter {
-         formatUser: () => string;
-       }
+```js
+    // class implements interface
+    interface UserFormatter {
+      formatUser: () => string;
+    }
 
-         export class User implements UserFormatter {
-           constructor(private fullName: string, private age: number) {}
+      export class User implements UserFormatter {
+        constructor(private fullName: string, private age: number) {}
 
-           formatUser = () => {
-             return `name: ${this.fullName}, age: ${this.age}`;
-           };
-         }
+        formatUser = () => {
+          return `name: ${this.fullName}, age: ${this.age}`;
+        };
+      }
 
-         let user = new User("Mr. Potato", 32);
-         console.log(user);
-         console.log(user.formatUser());
-   ```
+      let user = new User("Mr. Potato", 32);
+      console.log(user);
+      console.log(user.formatUser());
+```
 
-10. **Interface vs type**
+### 10. **Interface vs type**
 
     - both are nearly similar in most cases.
     - However, Adding new filed after creation is possible for an interface but not possible for a type.
@@ -884,7 +884,7 @@ This example demonstrates how you can use these OOP principles in TypeScript to 
     console.log(s1.printDetails());
     ```
 
-### 1.4 tsconfig
+## 1.4 tsconfig
 
 - create src, public folder
 - Inside public folder create index.html, style.css and inside src folder create index.ts or other ts files
@@ -909,7 +909,7 @@ This example demonstrates how you can use these OOP principles in TypeScript to 
 
 - run the compiler: tsc
 
-### 1.5 function
+## 1.5 function
 
 Explore TypeScript function types, including defining function signatures and using optional and default parameters.
 
@@ -1031,9 +1031,9 @@ class User implements IUserFormatter {
 }
 ```
 
-## 2. Intermediate Typescript Topics
+# 2. Intermediate Typescript Topics
 
-### 2.1 Creating types from types
+## 2.1 Creating types from types
 
 Generics in TypeScript provide a way to create reusable, type-safe functions, classes, and interfaces that work with a variety of data types. They allow you to write code that can operate on values of different types while preserving type information. Generics are denoted using angle brackets (`<>`) and can be used with functions, classes, and interfaces.
 
@@ -1147,7 +1147,7 @@ printUserInfo(101, "32");
 printUserInfo("101", "32");
 ```
 
-#### keyof type Example
+### keyof type Example
 
 The `keyof` keyword in TypeScript is used to create a union type of all the keys of an object type. It allows you to work with object keys in a type-safe way. Here's an example of how to use `keyof` in TypeScript:
 
@@ -1190,14 +1190,14 @@ In this example:
 
 The `keyof` type operator is useful when you want to perform operations on object keys dynamically or when you want to enforce type safety when working with object properties. It is commonly used in scenarios where you want to write code that can work with various object structures without compromising type safety.
 
-#### typeof type Example -
+### typeof type Example -
 
 ```js
 let firstName: string;
 let lastName: typeof firstName;
 ```
 
-#### Conditional type Example -
+### Conditional type Example -
 
 ```js
 interface Animal {
@@ -1216,7 +1216,7 @@ type Example2 = RegExp extends Animal ? number : string;
 type Example2 = string
 ```
 
-### 2.2 Narrowing
+## 2.2 Narrowing
 
 Narrowing in TypeScript refers to the process of refining the type of a variable or expression within a certain code block based on conditional checks. It allows you to make your code more type-safe by reducing the range of possible types for a variable when certain conditions are met. TypeScript's control flow analysis can automatically narrow the types of variables based on the context.
 
@@ -1251,7 +1251,7 @@ This type narrowing ensures that we can only access properties or perform operat
 
 TypeScript's control flow analysis is especially useful when working with union types, where you need to handle different types within the same function or code block while maintaining type safety.
 
-### 2.3 Type guards Example
+## 2.3 Type guards Example
 
 - type guards with typeof
 
@@ -1267,7 +1267,7 @@ const printAllTodos = (todos: string[] | null) => {
 };
 ```
 
-#### Truthiness narrowing Example
+### Truthiness narrowing Example
 
 ```js
 // false -> 0,NaN,"" (the empty string), 0n (the bigint version of zero), null, undefined
@@ -1285,13 +1285,13 @@ printAllTodos(todos1);
 printAllTodos(todos2);
 ```
 
-#### Equality narrowing Example
+### Equality narrowing Example
 
 ```js
 // == , ===, !=, !=== helps to narrow types
 ```
 
-### 2.4 DOM Manipulation with typescript
+## 2.4 DOM Manipulation with typescript
 
 - Example1
 
