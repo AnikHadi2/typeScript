@@ -492,3 +492,5 @@ console.log(teacher.subject); // Mathematics
    - This method behaves differently based on whether it's called on a `Student` or `Teacher` instance.
 
 This example demonstrates how you can use these OOP principles in TypeScript to create a well-structured and maintainable codebase.
+
+### Documentation [click here](https://www.notion.so/TypeScript-d0aa361574914f0fb742d6609ad125c3)

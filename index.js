@@ -13,12 +13,16 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+// public, private, protected, readonly
 var User = /** @class */ (function () {
     function User(firstName, lastName, age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
+    User.prototype.displayFullName = function () {
+        console.log(this.getFullName());
+    };
     User.prototype.getFullName = function () {
         return "".concat(this.firstName, " ").concat(this.lastName);
     };
@@ -46,10 +50,15 @@ var Student = /** @class */ (function (_super) {
         _this.grade = grade;
         return _this;
     }
-    Student.prototype.displayFullName = function () {
-        console.log(this.getFullName());
+    Student.prototype.setStudentId = function (studentId) {
+        this.studentId = studentId;
+    };
+    Student.prototype.getStudentId = function () {
+        return this.studentId;
     };
     return Student;
 }(User));
 var student1 = new Student("Rafi", "Hasan", 25, 80);
-student1.displayFullName();
+student1.setStudentId(20183290509);
+console.log(student1.firstName + " " + student1.lastName);
+console.log(student1.getStudentId());

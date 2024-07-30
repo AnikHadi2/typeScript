@@ -1,7 +1,8 @@
-abstract class User {
-  firstName: string;
-  lastName: string;
-  age: number;
+// public, private, protected, readonly
+class User {
+  readonly firstName: string;
+  readonly lastName: string;
+  protected age: number;
 
   constructor(firstName: string, lastName: string, age: number) {
     this.firstName = firstName;
@@ -9,7 +10,10 @@ abstract class User {
     this.age = age;
   }
 
-  abstract displayFullName(): void;
+  displayFullName(): void {
+    console.log(this.getFullName());
+  }
+
   getFullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
@@ -39,17 +43,25 @@ abstract class User {
 
 class Student extends User {
   grade: number;
+  private studentId: number;
 
   constructor(firstName: string, lastName: string, age: number, grade: number) {
     super(firstName, lastName, age);
     this.grade = grade;
   }
 
-  displayFullName(): void {
-    console.log(this.getFullName());
+  setStudentId(studentId: number): void {
+    this.studentId = studentId;
+  }
+
+  getStudentId(): number {
+    return this.studentId;
   }
 }
 
 const student1 = new Student("Rafi", "Hasan", 25, 80);
+student1.setStudentId(20183290509);
 
-student1.displayFullName();
+console.log(student1.firstName + " " + student1.lastName);
+
+console.log(student1.getStudentId());
