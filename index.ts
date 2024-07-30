@@ -45,9 +45,26 @@ const user2 = new User("Jane", "Smith", 25);
 user1.displayFullName();
 
 console.log(user1.getFullName()); // Hello, my name is John Doe and I am 30 years old.
-console.log(User.compareAge(user1, user2)); // -5
-console.log(User.isAdult(user2)); // true
-console.log(User.getUserDetails(user1)); // Name: John Doe, Age: 30
-console.log(User.getOldestUser(user1, user2).getFullName()); // John Doe
+// console.log(User.compareAge(user1, user2)); // -5
+// console.log(User.isAdult(user2)); // true
+// console.log(User.getUserDetails(user1)); // Name: John Doe, Age: 30
+// console.log(User.getOldestUser(user1, user2).getFullName()); // John Doe
 
 user1.greet(); // Hello, my name is John Doe and I am 30 years old.
+
+class Student extends User {
+  grade: number;
+
+  constructor(firstName: string, lastName: string, age: number, grade: number) {
+    super(firstName, lastName, age);
+    this.grade = grade;
+  }
+
+  displayInfo(): void {
+    console.log(`${this.getFullName()} - Grade: ${this.grade}`);
+  }
+}
+
+const student1 = new Student("Rafi", "Hasan", 25, 80);
+
+student1.displayInfo();
