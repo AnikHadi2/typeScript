@@ -28,9 +28,9 @@
 
 3. [Advanced TypeScript Topics]()
 
-## 1. Basic Typescript Topics
+# 1. Basic Typescript Topics
 
-### 1.1 Introduction to Typescript
+## 1.1 Introduction to Typescript
 
 What is TypeScript?
 
@@ -148,7 +148,7 @@ First typescript program
   name. //intellisense support will be here
   ```
 
-### 1.2 Data Types: Built-in / Basic Types
+## 1.2 Data Types: Built-in / Basic Types
 
 - Any (super type)
   - built in types: number, string, boolean, void, null, undefined, never
@@ -218,34 +218,101 @@ These basic types provide a foundation for specifying the types of variables and
   let userName = "anis"; // data type inferred as string
   ```
 
-7. **Custom Type**: you can create your own type
+## 2.4 DOM Manipulation with typescript
 
-   ```js
-   type User = { userName: string, userId: number };
+- Example1
 
-   let users: User[];
-   users = [];
+```html
+<body>
+  <input type="number" class="input1" placeholder="Enter any number" />
+  <input type="number" class="input2" placeholder="Enter any number" />
+  <button>Add</button>
+  <p></p>
+  <script src="./index.js"></script>
+</body>
+```
 
-   let user1: User;
-   user1 = { userName: "anis", userId: 101 };
-   users.push(user1);
+```js
+const number1 = document.querySelector(".input1") as HTMLInputElement;
+const number2 = document.querySelector(".input2") as HTMLInputElement;
+const addButton = document.querySelector("button")!;
+const result = document.querySelector("p")!;
 
-   let user2: User;
-   user2 = { userName: "rabu", userId: 102 };
-   users.push(user2);
+addButton?.addEventListener("click", () => {
+  const sum = Number(number1.value) + Number(number2.value);
+  result.textContent = `The result is ${sum}`;
+});
+```
 
-   let user3: User;
-   user3 = { userName: "lucky", userId: 103 };
-   users.push(user3);
+- Example2
 
-   // console.log(users);
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>welcome</h1>
+    <form class="user-form">
+      <div>
+        <label for="username">Username: </label>
+        <input type="text" id="username" />
+      </div>
+      <div>
+        <label for="useremail">email: </label>
+        <input type="email" id="useremail" />
+      </div>
 
-   type RequestType = "GET" | "POST";
-   let getRequest: RequestType;
-   getRequest = "GET";
+      <div>
+        <label for="country">Country: </label>
+        <select name="country" id="country">
+          <option value="bangladesh">bangladesh</option>
+          <option value="india">india</option>
+        </select>
+      </div>
 
-   function requestHandler(requestType: RequestType) {
-     console.log(requestType);
-   }
-   requestHandler("GET");
-   ```
+      <div>
+        <label for="feedback">feedback: </label>
+        <textarea name="feedback" id="feedback" cols="30" rows="5"></textarea>
+      </div>
+      <button type="submit">save</button>
+    </form>
+    <script src="../dist/index.js"></script>
+  </body>
+</html>
+```
+
+```ts
+const form = document.querySelector(".user-form") as HTMLFormElement;
+console.log(form);
+
+const userNameInput = document.querySelector("#username") as HTMLInputElement;
+console.log(userNameInput);
+
+const userEmailInput = document.querySelector("#useremail") as HTMLInputElement;
+console.log(userEmailInput);
+
+const userCountrySelect = document.querySelector(
+  "#country"
+) as HTMLSelectElement;
+console.log(userCountrySelect);
+
+const userFeedback = document.querySelector("#feedback") as HTMLTextAreaElement;
+console.log(userFeedback);
+
+form.addEventListener("submit", (e: Event) => {
+  e.preventDefault();
+  let userData = {
+    userName: userNameInput.value,
+    userEmail: userEmailInput.value,
+    userCountry: userCountrySelect.value,
+    userFeedback: userFeedback.value,
+  };
+  console.log(userData);
+});
+```
